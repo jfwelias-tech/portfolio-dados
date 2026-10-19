@@ -1,8 +1,8 @@
-**# João Felipe | Data Analytics Portfolio 📊**
+\# João Felipe | Data Analytics Portfolio 📊
 
 
 
-**### Business Operations | Data Analytics | Business Intelligence**
+\### Business Operations | Data Analytics | Business Intelligence
 
 
 
