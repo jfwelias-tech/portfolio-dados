@@ -1,0 +1,14 @@
+PORTFÓLIO DE DADOS — COMO PUBLICAR PELO GITHUB DESKTOP
+
+ATENÇÃO: esta versão foi montada sobre o arquivo ZIP do site que já tínhamos, não sobre uma sincronização do seu repositório. Se o site local atual tiver mudanças posteriores, COPIE APENAS OS ARQUIVOS DESTE PACOTE PARA UMA CÓPIA DA VERSÃO ATUAL, conferindo diferenças de index.html, assets/styles.css e assets/main.js.
+
+1. Abra o GitHub Desktop > repositório portfolio-dados > Fetch origin/Pull origin.
+2. Faça backup da pasta atual ou copie o repositório para outro lugar.
+3. Transfira os arquivos do pacote para a raiz da cópia do repositório, preservando a estrutura de pastas. Confira alterações nos três arquivos já existentes (index.html, styles.css, main.js) antes de substituí-los.
+4. Veja Changes no GitHub Desktop, confira que projetos existentes não foram excluídos.
+5. Teste index.html localmente, clique em Todos/Power BI/Python/SQL e abra os dois projetos. Verifique PT/EN.
+6. Commit: feat: add World Cup 2026 case study and filterable skills
+7. Push origin.
+8. Teste https://jfwelias-tech.github.io/portfolio-dados/ e a nova página /projects/copa-2026-powerbi/.
+
+Não inclui nem publica o PBIX original; só documentação e screenshots de trabalho.
