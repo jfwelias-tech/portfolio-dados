@@ -1,0 +1,39 @@
+/* Sobre mim V4: complementa o tema V2/V3, sem modificar projetos e filtros */
+.about-section.about-v3.about-v4 {background:linear-gradient(180deg,#edf6f1 0%,#f2f8f4 100%);padding:95px 0;}
+.about-v4-grid {display:grid;grid-template-columns:minmax(240px,.59fr) minmax(0,1.41fr);gap:clamp(32px,4.8vw,82px);align-items:start;}
+.about-v4-portrait-column {position:relative;min-width:0;}
+.about-v4-portrait-column .about-portrait {border-radius:20px;}
+.about-v4-photo-link {padding:10px 3px 0;text-align:center;}
+.about-v4-photo-link a {font-size:11px;font-weight:750;color:#217361;text-decoration:underline;text-underline-offset:3px;}
+.about-v4-proof {margin-top:24px;border:1px solid #c5d9cf;border-radius:16px;background:#fff;padding:15px 19px;display:grid;gap:11px;box-shadow:0 7px 23px rgba(23,58,47,.045);}
+.about-v4-proof > div {display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:3px 0;}
+.about-v4-proof > div + div {border-top:1px solid #dceae2;padding-top:13px;}
+.about-v4-proof strong {font-size:23px;color:#154338;letter-spacing:-.06em;}
+.about-v4-proof span {font-size:11px;color:#5a7770;text-align:right;}
+.about-v4-content h2 {font-size:clamp(33px,3.6vw,53px);margin:12px 0 18px;line-height:1.17;letter-spacing:-.052em;color:#193e36;}
+.about-v4-content .dot {color:#159274;}
+.about-v4-content .about-v4-lead {font-size:15px;line-height:1.75;color:#274e44;margin:0 0 28px;max-width:790px;}
+.about-v4-columns {display:grid;grid-template-columns: minmax(0,1.08fr) minmax(0,.92fr);gap:20px;align-items:start;}
+.about-v4-subpanels {display:grid;gap:20px;}
+.about-v4-panel {background:rgba(255,255,255,.82);border:1px solid #d4e5dc;border-radius:15px;padding:20px 19px 17px;min-width:0;box-shadow:0 5px 21px rgba(17,57,43,.035);}
+.about-v4-content h3 {font-size:13px;font-weight:850;letter-spacing:-.015em;color:#214b3e;margin:0 0 13px;}
+.about-v4-list {list-style:none;padding:0;margin:0;display:grid;gap:0;}
+.about-v4-list li {position:relative;padding:0 0 12px 13px;margin:0 0 12px;border-bottom:1px solid #e5f0e9;}
+.about-v4-list li:last-child {margin:0;padding-bottom:0;border:0;}
+.about-v4-list li::before {content:'•';position:absolute;left:0;top:0;font-size:13px;color:#198c70;}
+.about-v4-list strong {display:block;font-size:12px;line-height:1.5;color:#1d4239;margin-bottom:3px;}
+.about-v4-list span {display:block;font-size:11.5px;line-height:1.63;color:#526b62;}
+.about-v4-list span strong {display:inline;font-size:inherit;color:inherit;}
+.about-v4-skills {margin:23px 0 0;}
+.about-v4-skill-tags {display:flex;flex-wrap:wrap;gap:7px;}
+.about-v4-skill-tags span {border:1px solid #c1dad0;background:#fff;border-radius:999px;color:#1d5a4d;padding:8px 12px;font-size:11px;font-weight:800;}
+.about-v4-actions {display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:25px;scroll-margin-top:120px;}
+.about-v4-actions a {display:inline-flex;align-items:center;justify-content:center;padding:12px 15px;min-height:44px;border:1px solid #bfd8cd;background:#fff;border-radius:9px;color:#1e6252;font-size:12px;font-weight:800;text-decoration:none;transition:transform .2s,background .2s;}
+.about-v4-actions a:hover {transform:translateY(-2px);background:#f6fcf8;}
+.about-v4-actions a.about-v4-cv {background:#176753;color:white;border-color:#176753;}
+.about-v4-actions a.about-v4-cv:hover {background:#0e5441;}
+.about-v4-content .about-v4-privacy {color:#668178;font-size:10px;margin:12px 0 0;}
+@media(max-width:1050px){.about-v4-columns{grid-template-columns:1fr}.about-v4-subpanels{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.about-v4-grid{grid-template-columns:1fr;gap:24px}.about-v4-portrait-column{max-width:100%;display:grid;grid-template-columns:minmax(160px,1fr) minmax(0,1fr);gap:14px;align-items:start}.about-v4-photo-link{grid-column:1}.about-v4-proof{margin-top:0}}
+@media(max-width:570px){.about-section.about-v3.about-v4{padding:55px 0}.about-v4-portrait-column{display:block;max-width:380px}.about-v4-proof{margin-top:19px}.about-v4-subpanels{grid-template-columns:1fr}.about-v4-panel{padding:18px}.about-v4-content .about-v4-lead{font-size:14px}.about-v4-content h2{font-size:38px}.about-v4-actions a{flex:1 1 auto}}
+@media(prefers-reduced-motion:reduce){.about-v4-actions a{transition:none}}

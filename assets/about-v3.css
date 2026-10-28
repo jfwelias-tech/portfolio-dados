@@ -1,0 +1,28 @@
+/* Sobre V3 — extensão aditiva sobre portfolio-v2.css */
+.about-section.about-v3 {background:#eaf3ee; padding:105px 0;}
+.about-v3-grid {display:grid;grid-template-columns:minmax(270px,.78fr) minmax(0,1.22fr);gap:clamp(36px,5.5vw,96px);align-items:start;}
+.about-portrait {margin:0;position:relative;background:#123143;border:1px solid #d1e0d9;border-radius:22px;overflow:hidden;box-shadow:0 22px 54px rgba(25,62,56,.13);}
+.about-portrait img {display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;}
+.about-portrait figcaption {display:flex;flex-direction:column;gap:4px;padding:22px 25px;background:#123143;color:#edf9f5;}
+.about-portrait figcaption strong {font-family:Manrope,'DM Sans',sans-serif;font-size:15px;letter-spacing:.02em;}
+.about-portrait figcaption span {font-size:10px;color:#9fccc3;letter-spacing:.14em;font-weight:750;}
+.about-v3-content h2 {font-size:clamp(32px,3.35vw,50px);letter-spacing:-.05em;line-height:1.16;margin:14px 0 22px;}
+.about-v3-content h2 em {font-style:normal;color:#16836b;}
+.about-v3-content p {color:#4a625e;font-size:15px;line-height:1.8;margin:0 0 14px;}
+.about-v3-content p.about-lead {font-size:17px;line-height:1.72;color:#173b37;font-weight:550;}
+.about-career-grid {margin-top:25px;padding:12px 0;border-top:1px solid #bed5ca;border-bottom:1px solid #bed5ca;}
+.about-career-item {display:flex;gap:15px;padding:12px 0;align-items:flex-start;}
+.about-career-item + .about-career-item {border-top:1px solid #d7e7df;}
+.about-career-num {font-size:11px;font-weight:800;color:#198b73;padding-top:3px;letter-spacing:.1em;min-width:23px;}
+.about-career-item strong {display:block;font-size:13px;color:#1c3936;line-height:1.35;}
+.about-career-item small {display:block;color:#617a73;line-height:1.5;margin-top:3px;font-size:12px;}
+.about-v3-actions {display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:27px;scroll-margin-top:120px;}
+.about-v3-actions a {display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;font-size:12px;font-weight:800;min-height:42px;transition:background-color .2s,transform .2s;}
+.about-v3-actions a:hover {transform:translateY(-2px);}
+.about-link-primary {background:#16483c;color:#fff;}
+.about-link-primary:hover {background:#0d6650;}
+.about-link-secondary {border:1px solid #b5d2c5;background:#fff;color:#205c4f;}
+.about-link-secondary:hover {background:#f4fbf7;}
+@media(max-width:900px) {.about-v3-grid {gap:38px;grid-template-columns: minmax(220px,.8fr) minmax(0,1.2fr);} .about-v3-content h2 {font-size:36px;}}
+@media(max-width:760px) {.about-section.about-v3 {padding:70px 0;} .about-v3-grid {grid-template-columns:1fr;gap:33px;} .about-portrait {max-width:400px;} .about-v3-content h2 {font-size:clamp(32px,7.3vw,43px);} .about-v3-content p {font-size:14px;} .about-v3-content p.about-lead {font-size:16px;} }
+@media(prefers-reduced-motion:reduce) {.about-v3-actions a {transition:none;} }
