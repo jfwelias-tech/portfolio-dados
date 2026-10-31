@@ -37,3 +37,32 @@
 @media(max-width:850px){.about-v4-grid{grid-template-columns:1fr;gap:24px}.about-v4-portrait-column{max-width:100%;display:grid;grid-template-columns:minmax(160px,1fr) minmax(0,1fr);gap:14px;align-items:start}.about-v4-photo-link{grid-column:1}.about-v4-proof{margin-top:0}}
 @media(max-width:570px){.about-section.about-v3.about-v4{padding:55px 0}.about-v4-portrait-column{display:block;max-width:380px}.about-v4-proof{margin-top:19px}.about-v4-subpanels{grid-template-columns:1fr}.about-v4-panel{padding:18px}.about-v4-content .about-v4-lead{font-size:14px}.about-v4-content h2{font-size:38px}.about-v4-actions a{flex:1 1 auto}}
 @media(prefers-reduced-motion:reduce){.about-v4-actions a{transition:none}}
+
+
+/* V6 — foto vertical, destaques narrativos e descrição dos projetos sem negrito */
+.about-v4-portrait-column .about-portrait img {
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  object-position: center top;
+}
+.about-v4-proof.about-v4-highlights > div {
+  display: block;
+}
+.about-v4-proof.about-v4-highlights strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+.about-v4-proof.about-v4-highlights span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: left;
+  color: #526b62;
+}
+.about-v4-project-list > li > span,
+.about-v4-project-list > li > span strong {
+  font-weight: 400;
+}

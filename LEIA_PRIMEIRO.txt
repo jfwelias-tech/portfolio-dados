@@ -1,0 +1,26 @@
+ATUALIZACAO V6 — SOBRE MIM
+===========================
+
+MUDANCAS:
+1. A fotografia passa a ter proporcao vertical 5:6, evitando corte da cabeca.
+2. O bloco de 3 numeros foi substituido por 3 destaques profissionais.
+3. Os 3 textos de Projetos e competencias aplicadas foram reescritos.
+4. Negrito apenas nos titulos das competencias.
+5. Todos os textos tambem foram traduzidos para ingles (data-pt/data-en).
+
+COMO INSTALAR NO WINDOWS / GITHUB DESKTOP:
+1. No GitHub Desktop, abra Repository > Show in Explorer.
+2. Faca uma copia de seguranca do index.html e de assets/about-v4.css.
+3. Copie o index.html e a pasta assets deste pacote para a RAIZ da pasta do repositorio portfolio-dados.
+4. Confirme a substituicao do index.html e do assets/about-v4.css. NAO exclua as demais pastas.
+5. No GitHub Desktop, a aba Changes deve mostrar apenas:
+   - index.html (modified)
+   - assets/about-v4.css (modified)
+6. Abra o index.html localmente e teste a secao Sobre e os botoes PT/EN.
+7. Confira os arquivos alterados antes de fazer Commit to master e Push origin.
+8. Depois do deploy, abra https://jfwelias-tech.github.io/portfolio-dados/index.html e use Ctrl+F5.
+
+OBSERVACAO:
+Este pacote foi gerado usando o index.html da V5 que montamos anteriormente.
+Se voce fez outras alteracoes no index.html desde a V5, compare as diferencas antes de substituir.
+O pacote nao inclui imagens nem altera IDHM ou Copa.
