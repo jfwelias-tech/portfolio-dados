@@ -1,0 +1,46 @@
+/* IDHM / V5: scoped header. Preserves IDHM project and its dashboard styles. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+.idhm-skip{position:absolute;left:18px;top:-70px;z-index:999;background:#fff;color:#0c1824;padding:11px 14px;border-radius:5px}
+.idhm-skip:focus{top:12px}
+.idhm-global-header{background:#0c1824;color:#fff;border-bottom:1px solid #263846;font-family:'DM Sans',system-ui,Arial,sans-serif}
+.idhm-global-header-inner{max-width:1200px;width:calc(100% - 64px);margin:0 auto;min-height:88px;display:flex;align-items:center;gap:21px}
+.idhm-global-brand{display:flex;align-items:center;gap:13px;flex:0 0 auto;color:#fff;text-decoration:none}
+.idhm-brand-mark{font:800 27px/1 'Manrope',sans-serif;letter-spacing:-.09em}
+.idhm-brand-mark span{color:#8de1c4}
+.idhm-brand-caption{display:flex;flex-direction:column;gap:5px;font:800 12px/1.25 'Manrope',sans-serif;letter-spacing:.11em}
+.idhm-brand-caption small{color:#97aaa9;font-size:9px;font-weight:600;letter-spacing:.17em}
+.idhm-global-links{display:flex;align-items:center;justify-content:flex-end;gap:clamp(11px,1.5vw,29px);margin-left:auto;white-space:nowrap;font-size:12.5px;font-weight:600;color:#c2d0d4}
+.idhm-global-links a{color:inherit;text-decoration:none;transition:color .2s}
+.idhm-global-links a:hover,.idhm-global-links a:focus-visible{color:#9fe7d0}
+.idhm-global-links a.idhm-global-github{color:#fff}
+.idhm-global-header .jf-language-switch{margin-left:5px !important;gap:5px !important}
+.idhm-global-header .jf-language-switch .jf-language-btn{min-width:67px !important;min-height:38px !important;padding:7px 9px !important;border:1px solid #536973 !important;border-radius:20px !important;background:transparent !important;color:#d0d9db !important;font-size:11px !important}
+.idhm-global-header .jf-language-switch .jf-language-btn.is-active{background:#d9f5e8 !important;border-color:#d9f5e8 !important;color:#0c1824 !important}
+.idhm-global-header .jf-language-switch .jf-language-btn svg{width:22px !important;height:15px !important}
+.idhm-project-nav{background:#f7f9f7;border-bottom:1px solid #e1e9e8;font-family:'DM Sans',system-ui,Arial,sans-serif}
+.idhm-project-nav-inner{max-width:1200px;width:calc(100% - 64px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:55px}
+.idhm-project-back{font-size:12px;font-weight:750;color:#16483e;text-decoration:none;white-space:nowrap}
+.idhm-project-nav nav{display:flex;gap:26px;align-items:center}
+.idhm-project-nav nav a{font-size:12px;font-weight:700;text-decoration:none;color:#4c6870;white-space:nowrap}
+.idhm-project-nav nav a:hover,.idhm-project-back:hover{color:#168c78}
+.idhm-global-header a:focus-visible,.idhm-project-nav a:focus-visible{outline:3px solid #76deba;outline-offset:4px}
+@media(max-width:1180px){
+  .idhm-global-header-inner{flex-wrap:wrap;gap:0 14px;padding-top:15px;padding-bottom:9px}
+  .idhm-global-brand{margin-right:auto}
+  .idhm-global-links{order:3;justify-content:flex-start;width:100%;margin-left:0;gap:24px;overflow-x:auto;padding:13px 0 6px;scrollbar-width:thin}
+  .idhm-global-header .jf-language-switch{order:2;margin-left:auto !important}
+}
+@media(max-width:640px){
+  .idhm-global-header-inner,.idhm-project-nav-inner{width:calc(100% - 32px)}
+  .idhm-brand-caption{font-size:11px}.idhm-brand-caption small{font-size:8px}
+  .idhm-global-header .jf-language-switch .jf-language-btn{min-width:55px !important;font-size:10px !important;padding:6px !important}
+  .idhm-global-header .jf-language-switch .jf-language-btn svg{width:17px !important;height:12px !important}
+  .idhm-global-links{gap:19px}
+  .idhm-project-nav-inner{align-items:stretch;flex-direction:column;justify-content:center;gap:8px;padding:10px 0}
+  .idhm-project-nav nav{gap:20px;overflow-x:auto;padding:2px 0;scrollbar-width:thin}
+}
+@media(max-width:380px){
+ .idhm-brand-caption small{max-width:100px;line-height:1.35}
+ .idhm-global-brand{gap:8px}
+ .idhm-brand-mark{font-size:23px}
+}
