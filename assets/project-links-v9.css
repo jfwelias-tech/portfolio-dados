@@ -1,0 +1,52 @@
+/* Portfolio V9: tactile navigation cards and skill shortcuts, no layout redesign. */
+.tool-grid > a.tool-project-link,
+.tool-grid > div.tool-project-pending {
+  display:block;
+  background:#fff;
+  border:1px solid var(--line,#e4e9e8);
+  padding:25px 23px;
+  border-radius:10px;
+  min-height:205px;
+}
+.tool-grid > a.tool-project-link {
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.tool-grid > a.tool-project-link:hover {
+  transform:translateY(-3px);
+  box-shadow:0 14px 28px rgba(15,57,51,.11);
+  border-color:#7bbbaa;
+}
+.tool-grid > a.tool-project-link small,
+.tool-grid > div.tool-project-pending small {
+  display:block;
+  margin-top:17px;
+  font-size:11px;
+  font-weight:750;
+  line-height:1.45;
+  color:#147e67;
+}
+.tool-grid > div.tool-project-pending small {color:#75827e;font-weight:650;}
+.about-v4-skill-tags a,
+.about-v4-skill-tags span {
+  border:1px solid #c1dad0;
+  background:#fff;
+  border-radius:999px;
+  color:#1d5a4d;
+  padding:8px 12px;
+  font-size:11px;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  line-height:1.4;
+}
+.about-v4-skill-tags a {transition:background .18s,border-color .18s,transform .18s;}
+.about-v4-skill-tags a:hover {background:#def3e9;border-color:#4b9c82;transform:translateY(-1px);}
+.about-v4-skill-tags .skill-coming-soon {opacity:.7;cursor:default;}
+.about-v4-project-list .about-project-link {display:inline-block;color:inherit;}
+.about-v4-project-list .about-project-link:hover strong {color:#087b66;text-decoration:underline;text-underline-offset:3px;}
+.tag-row a.tag-project-link {display:inline-flex;align-items:center;}
+@media(max-width:430px) {
+  .tool-grid > a.tool-project-link,
+  .tool-grid > div.tool-project-pending {min-height:unset;}
+}
