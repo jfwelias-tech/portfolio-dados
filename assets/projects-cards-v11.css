@@ -1,0 +1,162 @@
+/* V11 — Three well-defined cards + soft caramel teaser for Paging Dr. Beat.
+   Only affects the project cards section; header, dashboards and other pages stay untouched. */
+#project-cards.project-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+#project-cards.project-grid--three .project-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #151515;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#project-cards.project-grid--three .project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(12,24,36,.09);
+}
+#project-cards.project-grid--three .project-cover {
+  flex-shrink: 0;
+  height: 285px;
+  border-bottom: 1px solid #151515;
+}
+#project-cards.project-grid--three .project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 25px 24px 27px;
+}
+#project-cards.project-grid--three .project-body h3 {
+  font-size: clamp(19px, 1.7vw, 25px);
+  overflow-wrap: break-word;
+}
+#project-cards.project-grid--three .project-body > p {
+  margin: 20px 0 23px;
+  min-height: 0;
+}
+#project-cards.project-grid--three .project-cta {
+  align-self: flex-start;
+  margin-top: auto;
+}
+#project-cards.project-grid--three .cover-header {
+  left: 22px;
+  right: 22px;
+  font-size: 9px;
+}
+/* Fit original illustrated covers inside narrower, three-column cards. */
+#project-cards.project-grid--three .cover-cup-content {left:22px;right:22px;top:75px;}
+#project-cards.project-grid--three .cup-circle {gap:12px;}
+#project-cards.project-grid--three .cup-trophy {font-size:56px;}
+#project-cards.project-grid--three .cup-circle strong {font-size:34px;}
+#project-cards.project-grid--three .cup-cover-stats {gap:17px;margin-top:29px;}
+#project-cards.project-grid--three .cup-cover-stats > span {font-size:19px;}
+#project-cards.project-grid--three .idhm-cover-title {top:83px;left:24px;right:20px;}
+#project-cards.project-grid--three .idhm-cover-title strong {font-size:44px;}
+#project-cards.project-grid--three .idhm-cover-title strong span {font-size:19px;}
+#project-cards.project-grid--three .idhm-graphic {height:65px;}
+/* New 911 card — intentionally very light caramel, without invented project results. */
+#project-cards .project-card-coming-soon {background:#fffdf9;}
+#project-cards .calls-cover {
+  position: relative;
+  isolation: isolate;
+  color: #452b1d;
+  background: linear-gradient(125deg, #fffaf2 0%, #faeee0 58%, #f2dfc9 100%);
+}
+#project-cards .calls-cover::before {
+  content: '';
+  position: absolute;
+  width: 335px;
+  height: 335px;
+  right: -155px;
+  top: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(165,102,54,.18);
+  box-shadow: 0 0 0 36px rgba(198,146,97,.05),0 0 0 80px rgba(198,146,97,.04);
+  pointer-events: none;
+  z-index: -1;
+}
+#project-cards .calls-cover-content {
+  position: absolute;
+  top: 72px;
+  left: 24px;
+  right: 24px;
+  bottom: 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+#project-cards .calls-kicker {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: #8c5d40;
+}
+#project-cards .calls-cover-heading {
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  min-width:0;
+}
+#project-cards .calls-pulse {width:67px;height:70px;flex-shrink:0;color:#b27343;}
+#project-cards .calls-cover-heading strong {
+  font-family: Manrope,system-ui,sans-serif;
+  font-size: clamp(31px, 2.8vw, 42px);
+  font-weight:800;
+  line-height:1.06;
+  letter-spacing:-.07em;
+}
+#project-cards .calls-cover-heading strong em {display:block;font-style:normal;color:#b4713a;}
+#project-cards .calls-status-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: #eecfae;
+  color: #684222;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .11em;
+}
+#project-cards .calls-status-preview > span:first-child {font-size:17px;line-height:1;}
+#project-cards .project-card-coming-soon .project-body {background: #fffcf7;}
+#project-cards .project-card-coming-soon .number {color:#977354;}
+#project-cards .status-chip.soon {background:#f4e0c9;color:#855128;}
+#project-cards .planned-tag {
+  display:inline-flex;
+  align-items:center;
+  padding:5px 9px;
+  border:1px solid #ead1b8;
+  border-radius:5px;
+  background:#fff5e9;
+  color:#76513a;
+  font-size:11px;
+  font-weight:750;
+}
+#project-cards .calls-cta {color:#8e6140;border-color:#d8a974;cursor:default;}
+/* Tablet: two columns; center the last teaser in its own row. */
+@media (max-width: 1110px) and (min-width: 761px) {
+  #project-cards.project-grid--three {grid-template-columns: repeat(2,minmax(0,1fr));}
+  #project-cards.project-grid--three .project-card-coming-soon {grid-column: 1 / -1;max-width: calc((100% - 20px) / 2);width:100%;justify-self:center;}
+}
+@media (max-width: 760px) {
+  #project-cards.project-grid--three {grid-template-columns:1fr;gap:22px;}
+  #project-cards.project-grid--three .project-cover {height:290px;}
+  #project-cards.project-grid--three .project-body {padding:25px;}
+  #project-cards.project-grid--three .project-body h3 {font-size:clamp(21px,5vw,27px);}
+}
+@media (max-width: 375px) {
+  #project-cards.project-grid--three .calls-pulse {width:50px;height:56px;}
+  #project-cards.project-grid--three .calls-cover-heading strong {font-size:30px;}
+  #project-cards.project-grid--three .idhm-cover-title strong {font-size:39px;}
+}
+@media (prefers-reduced-motion: reduce) {
+  #project-cards.project-grid--three .project-card {transition:none;}
+}
