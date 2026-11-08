@@ -1,0 +1,83 @@
+/* V14 — Além dos dados / Beyond the Data
+   Card no fim da secao Sobre mim. Nao modifica o cabecalho global V13. */
+.about-section .about-v14-wrap {
+  margin-top: clamp(24px, 3vw, 44px);
+}
+.about-v14-card, .about-v14-card * { box-sizing: border-box; }
+.about-v14-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(220px, .65fr);
+  gap: clamp(24px, 4vw, 66px);
+  align-items: center;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #cfe1d6;
+  border-radius: 21px;
+  padding: clamp(25px, 3.2vw, 48px);
+  box-shadow: 0 8px 32px rgba(18, 55, 45, .045);
+  color: #244a3f;
+}
+.about-v14-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 16px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  line-height: 1.3;
+  color: #368875;
+}
+.about-v14-signal { width: 8px; height: 8px; background: #4bba9a; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 5px rgba(75,186,154,.12); }
+.about-v14-heading {display:flex;align-items:center;gap:12px;margin:0 0 16px;}
+.about-v14-icon {
+  width: 42px; height: 42px; border: 1px solid #cfe7dc;
+  background: #e7f5ef; color: #19745d; border-radius: 13px;
+  display: inline-flex; align-items:center; justify-content:center; flex:0 0 42px;
+}
+.about-section .about-v14-card h3 {
+  font-size: clamp(23px, 2vw, 32px);
+  line-height: 1.15;
+  letter-spacing: -.045em;
+  font-weight: 800;
+  color: #173f35;
+  margin: 0;
+}
+.about-v14-description {
+  margin: 0;
+  max-width: 860px;
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.85;
+  color: #4c6a60;
+  font-weight: 400;
+  text-wrap: pretty;
+}
+.about-v14-tags {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  min-width: 0;
+}
+.about-v14-tag {
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  gap: 8px;
+  min-height: 93px;
+  background:#f5faf7;
+  border:1px solid #deebe3;
+  border-radius: 13px;
+  padding: 18px 15px;
+  color:#246e5b;
+}
+.about-v14-tag span {font-size: 12px;line-height:1.3;font-weight:800;color:#245848;letter-spacing:.01em;}
+@media(max-width:960px){
+  .about-v14-card {grid-template-columns: minmax(0, 1fr);gap:22px;}
+  .about-v14-tags {grid-template-columns:repeat(4,minmax(0,1fr));}
+  .about-v14-tag {min-height:85px;}
+}
+@media(max-width:590px){
+  .about-v14-card {padding:22px 20px;border-radius:18px;}
+  .about-v14-eyebrow {font-size:9px;letter-spacing:.11em;}
+  .about-v14-tags {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .about-v14-tag {min-height:80px;padding:13px;}
+  .about-v14-description {line-height:1.7;}
+}
