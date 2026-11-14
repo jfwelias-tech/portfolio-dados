@@ -1,0 +1,50 @@
+/* V15 — layout circular e bloco de apresentação; não afeta header nem projetos. */
+.about-section.about-v3.about-v4 { padding-top: clamp(52px, 6vw, 90px); }
+.about-v15-main { display: grid; gap: clamp(22px, 2.8vw, 38px); }
+.about-v15-intro-card {
+  display: grid;
+  grid-template-columns: clamp(148px, 15vw, 208px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4.3vw, 74px);
+  padding: clamp(26px, 3.5vw, 52px);
+  background: rgba(255,255,255,.85);
+  border: 1px solid #d0e4d8;
+  border-radius: 26px;
+  box-shadow: 0 13px 32px rgba(19,65,49,.045);
+}
+.about-v15-avatar { width: 100%; max-width: 208px; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 0 0 1px #cce2d7, 0 12px 28px rgba(12,36,31,.13); }
+.about-v15-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.about-v15-intro-copy { min-width: 0; }
+.about-v15-intro-copy .section-number { display: block; margin: 0 0 8px; }
+.about-v15-intro-copy h2 { font-size: clamp(38px, 4.2vw, 67px); line-height: 1.1; letter-spacing: -.055em; margin: 0 0 17px; color: #163b33; }
+.about-v15-intro-copy h2 .dot { color: #159274; }
+.about-v15-intro-copy .about-v15-lead { max-width: 900px; color: #264d43; font-size: clamp(15px, 1.22vw, 19px); line-height: 1.78; margin: 0; }
+.about-v15-detail-grid { display: grid; grid-template-columns: minmax(245px,.53fr) minmax(0,1.47fr); gap: clamp(22px, 2.8vw, 44px); align-items: start; }
+.about-v15-side { min-width: 0; }
+.about-v15-side .about-v4-proof { margin: 0; padding: 24px 23px; }
+.about-v15-side .about-v4-highlights > div { display: grid; justify-content: stretch; align-items: start; gap: 8px; padding: 4px 0; }
+.about-v15-side .about-v4-highlights > div+div { padding-top: 16px; }
+.about-v15-side .about-v4-highlights strong { display: block; font-size: 16px; letter-spacing: -.025em; line-height: 1.4; }
+.about-v15-side .about-v4-highlights span { display: block; font-size: 13px; line-height: 1.6; color: #4c6d64; text-align: left; }
+.about-v15-content { min-width: 0; }
+.about-v15-content .about-v4-columns { gap: 18px; }
+.about-v15-content .about-v4-panel { padding: 23px 22px; }
+.about-v15-content .about-v4-list strong { font-size: 13.5px; }
+.about-v15-content .about-v4-list span { font-size: 12.8px; line-height: 1.65; }
+.about-v15-content h3 { font-size: 15px; }
+@media (max-width: 1040px) {
+  .about-v15-detail-grid { grid-template-columns: 1fr; }
+  .about-v15-side .about-v4-highlights { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 24px; }
+  .about-v15-side .about-v4-highlights > div+div { border-top: 0; padding-top: 4px; }
+  .about-v15-side .about-v4-highlights > div:nth-child(n+3) { border-top: 1px solid #dceae2; padding-top: 14px; }
+}
+@media (max-width: 650px) {
+  .about-v15-intro-card { grid-template-columns: 1fr; gap: 21px; padding: 25px 22px 28px; }
+  .about-v15-avatar { width: 160px; max-width: 160px; }
+  .about-v15-intro-copy h2 { font-size: clamp(36px, 8.2vw, 47px); margin-bottom: 12px; }
+  .about-v15-intro-copy .about-v15-lead { font-size: 15px; line-height: 1.75; }
+  .about-v15-side .about-v4-highlights { grid-template-columns: 1fr; }
+  .about-v15-side .about-v4-highlights > div:nth-child(n) { border-top: 0; padding-top: 4px; }
+  .about-v15-side .about-v4-highlights > div + div { border-top: 1px solid #dceae2; padding-top: 14px; }
+  .about-v15-content .about-v4-panel { padding: 20px; }
+}
