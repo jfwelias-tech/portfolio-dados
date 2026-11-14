@@ -1,4 +1,4 @@
-/* V15 — layout circular e bloco de apresentação; não afeta header nem projetos. */
+/* V15.2 — layout circular e enquadramento com respiro acima do cabelo; não afeta header nem projetos. */
 .about-section.about-v3.about-v4 { padding-top: clamp(52px, 6vw, 90px); }
 .about-v15-main { display: grid; gap: clamp(22px, 2.8vw, 38px); }
 .about-v15-intro-card {
@@ -13,7 +13,7 @@
   box-shadow: 0 13px 32px rgba(19,65,49,.045);
 }
 .about-v15-avatar { width: 100%; max-width: 208px; aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 4px solid white; box-shadow: 0 0 0 1px #cce2d7, 0 12px 28px rgba(12,36,31,.13); }
-.about-v15-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.about-v15-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
 .about-v15-intro-copy { min-width: 0; }
 .about-v15-intro-copy .section-number { display: block; margin: 0 0 8px; }
 .about-v15-intro-copy h2 { font-size: clamp(38px, 4.2vw, 67px); line-height: 1.1; letter-spacing: -.055em; margin: 0 0 17px; color: #163b33; }
