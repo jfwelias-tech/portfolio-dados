@@ -160,3 +160,69 @@
 @media (prefers-reduced-motion: reduce) {
   #project-cards.project-grid--three .project-card {transition:none;}
 }
+
+/* Projeto 03 — Alô, Cidade!: capa baseada no heatmap real, mantendo o grid existente. */
+#project-cards .city-cover {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  color:#ffffff;
+  background:linear-gradient(135deg,#0c2231 0%,#154963 100%);
+}
+#project-cards .city-cover::after {
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:linear-gradient(180deg,rgba(10,28,42,.08) 18%,rgba(7,23,35,.36) 50%,rgba(7,23,35,.98) 100%);
+  pointer-events:none;
+}
+#project-cards .city-cover .cover-header {z-index:3;color:#d9f3f4;}
+#project-cards .city-cover-visual {
+  position:absolute;
+  top:90px;
+  left:18px;
+  right:-76px;
+  height:185px;
+  border:1px solid rgba(219,242,247,.22);
+  border-radius:9px;
+  box-shadow:0 8px 28px rgba(0,0,0,.27);
+  overflow:hidden;
+  transform:rotate(-5deg);
+  opacity:.78;
+}
+#project-cards .city-cover-visual img {width:100%;height:100%;object-fit:cover;display:block;}
+#project-cards .city-cover-content {
+  position:absolute;
+  z-index:2;
+  left:23px;
+  right:22px;
+  bottom:23px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+#project-cards .city-cover-content small {
+  color:#aee5e7;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+#project-cards .city-cover-content strong {
+  font-family:Manrope,system-ui,sans-serif;
+  font-size:clamp(30px,2.7vw,40px);
+  line-height:1.07;
+  font-weight:800;
+  letter-spacing:-.065em;
+}
+#project-cards .city-cover-content strong em {font-style:normal;color:#9ce5d5;}
+#project-cards .city-cover-stat {font-size:11px;font-weight:700;color:#d4e9eb;}
+#project-cards .city-cover .cover-corner {z-index:3;color:#e3fcf6;}
+@media (max-width:1110px) and (min-width:761px) {
+  #project-cards.project-grid--three .project-card:nth-child(3) {
+    grid-column:1 / -1;
+    width:100%;
+    max-width:calc((100% - 20px) / 2);
+    justify-self:center;
+  }
+}
