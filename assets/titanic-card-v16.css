@@ -1,0 +1,15 @@
+/* Project 04: preserve existing cards, add a balanced two-column layout. */
+#project-cards.project-grid--four { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#project-cards.project-grid--four .project-card { grid-column:auto; max-width:none; width:100%; justify-self:stretch; }
+#project-cards.project-grid--four .project-card[hidden] { display:none; }
+#project-cards.project-grid--four .titanic-card { border:2px solid #000; background:#fff; }
+#project-cards .titanic-cover { background:#0c1824; padding:0; border-bottom:1px solid #000; }
+#project-cards .titanic-cover img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+#project-cards .titanic-card .project-meta { flex-wrap:wrap; gap:10px; }
+#project-cards .titanic-card .number { color:#142342; }
+#project-cards .titanic-card .status-chip { background:#ffdfa7; color:#865008; }
+#project-cards .titanic-card h3 { color:#101d36; line-height:1.2; margin-top:18px; }
+#project-cards .titanic-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+#project-cards .titanic-tags span { border:1px solid #142342; border-radius:8px; padding:5px 10px; font-size:12px; font-weight:700; color:#142342; }
+#project-cards .titanic-coming-soon { margin-top:auto; width:100%; padding:14px; border:0; border-radius:10px; background:#223351; color:#fff; font:inherit; font-weight:700; cursor:default; opacity:1; }
+@media(max-width:760px){ #project-cards.project-grid--four {grid-template-columns:1fr;} }
