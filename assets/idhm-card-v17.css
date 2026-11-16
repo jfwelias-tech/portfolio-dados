@@ -1,0 +1,128 @@
+/* Project 01 / IDHM — illustrated cover from the approved concept.
+   Map artwork is illustrative, not a data-driven choropleth.
+   Keep headings in HTML for accessibility and PT/EN translation. */
+#project-cards .idhm-cover {
+  isolation: isolate;
+  color: #17463d;
+  background: linear-gradient(125deg, #eef7f0 0%, #d9eee4 55%, #c4e8da 100%);
+}
+#project-cards .idhm-cover::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 350px;
+  height: 350px;
+  right: -150px;
+  top: -75px;
+  border-radius: 50%;
+  border: 1px solid rgba(52, 143, 113, .17);
+  box-shadow: 0 0 0 38px rgba(82, 175, 141, .065),
+              0 0 0 85px rgba(82, 175, 141, .045);
+}
+#project-cards .idhm-cover::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: -13px;
+  top: 12px;
+  width: min(76%, 330px);
+  height: calc(100% - 22px);
+  background: url("./idhm-map-cover.webp") no-repeat center / contain;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.50) 23%, #000 47%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.50) 23%, #000 47%);
+  pointer-events: none;
+}
+#project-cards .idhm-cover .cover-header {
+  z-index: 4;
+  color: #1d5145;
+}
+#project-cards .idhm-cover-title {
+  z-index: 3;
+  top: 77px;
+  left: 22px;
+  right: auto;
+  width: calc(100% - 42px);
+  gap: 0;
+  pointer-events: none;
+}
+#project-cards .idhm-cover-title small {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  line-height: 1.4;
+}
+#project-cards .idhm-cover-title strong {
+  margin-top: 6px;
+  font-size: clamp(32px, 3.3vw, 42px);
+  letter-spacing: -.065em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+#project-cards .idhm-cover-title strong span {
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: -.025em;
+}
+#project-cards .idhm-dimensions {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  width: fit-content;
+  max-width: 210px;
+  margin-top: 10px;
+  padding: 6px 9px;
+  background: rgba(241, 250, 245, .78);
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 12px;
+  font-size: 9px;
+  line-height: 1.25;
+}
+#project-cards .idhm-dimensions b {
+  letter-spacing: .11em;
+  font-size: 9px;
+}
+#project-cards .idhm-dimensions span {
+  color: #285d51;
+  letter-spacing: 0;
+}
+#project-cards .idhm-graphic {
+  height: 45px;
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  margin: 12px 0 8px;
+}
+#project-cards .idhm-graphic div {
+  width: 34px;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(180deg, #2a9c80, #91cfb5);
+  opacity: .88;
+}
+#project-cards .idhm-cover-title > span {
+  font-size: 10px;
+  letter-spacing: .11em;
+  color: #1b5648;
+}
+#project-cards .idhm-cover-title > span b {
+  padding: 0 5px;
+  color: #1d9278;
+}
+#project-cards .idhm-cover .cover-corner {
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  right: 14px;
+  bottom: 15px;
+  border-color: #2e846d;
+  color: #2e846d;
+  background: rgba(224, 246, 234, .64);
+}
+@media (max-width: 760px) {
+  #project-cards .idhm-cover::after { right: -25px; width: 79%; opacity: .88; }
+  #project-cards .idhm-cover-title { top: 78px; left: 23px; }
+}
+@media (max-width: 390px) {
+  #project-cards .idhm-cover-title strong { font-size: 32px; }
+  #project-cards .idhm-cover-title strong span { font-size: 13px; }
+  #project-cards .idhm-dimensions { font-size: 8px; }
+}
