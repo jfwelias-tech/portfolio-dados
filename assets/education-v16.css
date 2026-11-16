@@ -1,6 +1,6 @@
 /* V16 — cartão Formação / Education; escopo restrito à seção. */
 #jf-education-v16 .edu-v16-list{display:flex;flex-direction:column;margin-top:15px}
-#jf-education-v16 .edu-v16-item{display:grid;grid-template-columns:74px minmax(0,1fr);gap:14px;align-items:start;padding:16px 0;border-bottom:1px solid #e1ece7}
+#jf-education-v16 .edu-v16-item{display:grid;grid-template-columns:60px minmax(0,1fr);gap:14px;align-items:start;padding:16px 0;border-bottom:1px solid #e1ece7}
 #jf-education-v16 .edu-v16-item:first-child{padding-top:4px}
 #jf-education-v16 .edu-v16-item:last-child{border-bottom:0;padding-bottom:0}
 #jf-education-v16 .edu-v16-copy{min-width:0}
@@ -15,7 +15,7 @@
 
 
 /* Logotipos originais mantidos na proporção original, sem recortes. */
-#jf-education-v16 .edu-v16-logo-shell{width:72px;height:72px;display:flex;align-items:center;justify-content:center;padding:5px;background:#fff;border:1px solid #e3ede8;border-radius:12px;box-sizing:border-box}
+#jf-education-v16 .edu-v16-logo-shell{width:60px;height:60px;display:flex;align-items:center;justify-content:center;padding:5px;background:#fff;border:1px solid #e3ede8;border-radius:12px;box-sizing:border-box}
 #jf-education-v16 .edu-v16-logo{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 #jf-education-v16 .edu-v16-logo-harve{padding:0}
-@media(max-width:420px){#jf-education-v16 .edu-v16-item{grid-template-columns:58px minmax(0,1fr);gap:10px}#jf-education-v16 .edu-v16-logo-shell{width:56px;height:56px;padding:4px;border-radius:10px}}
+@media(max-width:420px){#jf-education-v16 .edu-v16-item{grid-template-columns:50px minmax(0,1fr);gap:10px}#jf-education-v16 .edu-v16-logo-shell{width:48px;height:48px;padding:4px;border-radius:10px}}
