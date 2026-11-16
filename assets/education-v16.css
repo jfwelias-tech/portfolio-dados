@@ -1,13 +1,8 @@
 /* V16 — cartão Formação / Education; escopo restrito à seção. */
 #jf-education-v16 .edu-v16-list{display:flex;flex-direction:column;margin-top:15px}
-#jf-education-v16 .edu-v16-item{display:grid;grid-template-columns:44px minmax(0,1fr);gap:13px;align-items:start;padding:16px 0;border-bottom:1px solid #e1ece7}
+#jf-education-v16 .edu-v16-item{display:grid;grid-template-columns:60px minmax(0,1fr);gap:14px;align-items:start;padding:16px 0;border-bottom:1px solid #e1ece7}
 #jf-education-v16 .edu-v16-item:first-child{padding-top:4px}
 #jf-education-v16 .edu-v16-item:last-child{border-bottom:0;padding-bottom:0}
-#jf-education-v16 .edu-v16-monogram{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border-radius:10px;font:800 13px/1.1 system-ui,sans-serif;letter-spacing:-.04em;border:1px solid #e2e8e5;user-select:none}
-#jf-education-v16 .edu-v16-uppsala{background:#f8eae7;color:#981e2b}
-#jf-education-v16 .edu-v16-puc{background:#e8edf8;color:#254c80;font-size:12px}
-#jf-education-v16 .edu-v16-harve{background:#152d2d;color:#d7f8e9;font-size:23px}
-#jf-education-v16 .edu-v16-hx{background:#f2ece4;color:#7d5334;font-size:18px}
 #jf-education-v16 .edu-v16-copy{min-width:0}
 #jf-education-v16 .edu-v16-title-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:4px}
 #jf-education-v16 .edu-v16-title-row strong{color:#153f35;font-weight:750;font-size:15px;line-height:1.45}
@@ -17,4 +12,10 @@
 #jf-education-v16 .edu-v16-copy p + p{margin-top:10px}
 #jf-education-v16 .edu-v16-completed{margin-bottom:9px}
 #jf-education-v16 .edu-v16-status{display:inline-flex;border-radius:100px;background:#e4f5ee;color:#266953;padding:4px 9px;font:700 11px/1.2 system-ui,sans-serif;margin-top:2px}
-@media(max-width:420px){#jf-education-v16 .edu-v16-item{grid-template-columns:38px minmax(0,1fr);gap:10px}#jf-education-v16 .edu-v16-monogram{width:36px;height:36px;border-radius:8px}}
+
+
+/* Logotipos originais mantidos na proporção original, sem recortes. */
+#jf-education-v16 .edu-v16-logo-shell{width:60px;height:60px;display:flex;align-items:center;justify-content:center;padding:5px;background:#fff;border:1px solid #e3ede8;border-radius:12px;box-sizing:border-box}
+#jf-education-v16 .edu-v16-logo{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+#jf-education-v16 .edu-v16-logo-harve{padding:0}
+@media(max-width:420px){#jf-education-v16 .edu-v16-item{grid-template-columns:50px minmax(0,1fr);gap:10px}#jf-education-v16 .edu-v16-logo-shell{width:48px;height:48px;padding:4px;border-radius:10px}}
