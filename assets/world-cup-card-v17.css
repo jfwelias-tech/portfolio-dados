@@ -1,0 +1,155 @@
+/* Project 02 — World Cup 2026 case-study redesign (v17).
+   Scoped overrides preserve the other project cards and the black outline. */
+#project-cards .cup-redesign { border:1px solid #151515; }
+#project-cards .cup-redesign .cup-cover {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:#062d31;
+  color:#f6fffc;
+}
+#project-cards .cup-redesign .cup-cover::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  width:auto;height:auto;top:0;right:0;
+  border:0;border-radius:0;box-shadow:none;
+  background:linear-gradient(90deg,rgba(1,28,32,.85) 0%,rgba(3,38,42,.72) 49%,rgba(1,35,36,.06) 100%);
+  z-index:1;pointer-events:none;
+}
+#project-cards .cup-redesign .cup-cover::after {
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,30,31,.56),transparent 40%);
+  z-index:1;pointer-events:none;
+}
+#project-cards .cup-redesign .cup-art {
+  position:absolute;inset:0;width:100%;height:100%;
+  display:block;object-fit:cover;object-position:58% center;
+  z-index:0;transform:scale(1.01);transition:transform .45s ease;
+}
+#project-cards .cup-redesign:hover .cup-art {transform:scale(1.05);}
+#project-cards .cup-redesign .cover-header {
+  position:absolute;z-index:3;top:20px;left:21px;right:21px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  font-size:8px;font-weight:800;letter-spacing:.13em;
+  color:#eafbf2;text-shadow:0 1px 6px rgba(0,0,0,.3);
+}
+#project-cards .cup-redesign .cover-header span:first-child {
+  padding-left:12px;border-left:3px solid #64de9f;white-space:nowrap;
+}
+#project-cards .cup-redesign .cover-header span:last-child {
+  text-align:right;line-height:1.4;
+}
+#project-cards .cup-redesign .cover-cup-content {
+  position:absolute;z-index:3;top:76px;left:21px;right:21px;
+}
+#project-cards .cup-redesign .cup-circle {display:flex;gap:11px;align-items:center;}
+#project-cards .cup-redesign .cup-trophy-icon {
+  width:37px;height:60px;flex:none;filter:drop-shadow(0 0 14px rgba(106,224,173,.3));
+}
+#project-cards .cup-redesign .cup-circle div {
+  display:flex;flex-direction:column;padding-left:11px;
+  border-left:1px solid rgba(161,240,207,.46);
+}
+#project-cards .cup-redesign .cup-circle small {
+  color:#78e9bb;font-size:8px;letter-spacing:.2em;
+  font-weight:800;margin-bottom:4px;
+}
+#project-cards .cup-redesign .cup-circle strong {
+  font-family:Manrope,system-ui,sans-serif;
+  font-weight:900;font-size:clamp(27px,2.6vw,35px);
+  line-height:1.04;letter-spacing:-.055em;
+  color:#fff;text-shadow:0 2px 11px rgba(0,0,0,.26);
+}
+#project-cards .cup-redesign .cup-circle strong em {
+  font-style:normal;color:#70eaa5;
+}
+#project-cards .cup-redesign .cup-cover-stats {
+  display:flex;gap:0;margin-top:31px;align-items:stretch;
+  max-width:275px;
+}
+#project-cards .cup-redesign .cup-cover-stats > span {
+  font-family:Manrope,system-ui,sans-serif;font-weight:900;
+  font-size:22px;line-height:1;flex:1;min-width:0;
+  padding-left:11px;border-left:1px solid rgba(192,246,218,.4);
+  color:#fff;text-shadow:0 1px 9px rgba(0,0,0,.25);
+}
+#project-cards .cup-redesign .cup-cover-stats > span:first-child {
+  padding-left:0;border-left:0;
+}
+#project-cards .cup-redesign .cup-cover-stats small {
+  display:block;margin-top:7px;color:#b8eee0;
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:9px;line-height:1.25;font-weight:800;letter-spacing:.08em;
+}
+#project-cards .cup-redesign .cover-corner {
+  z-index:3;width:33px;height:33px;right:18px;bottom:17px;
+  background:rgba(3,34,39,.32);border:1px solid rgba(230,255,244,.72);
+  transition:background .2s ease,transform .2s ease;
+}
+#project-cards .cup-redesign .cup-cover:hover .cover-corner {
+  background:#126951;transform:translate(2px,-2px);
+}
+#project-cards .cup-redesign .project-body {
+  background:linear-gradient(146deg,#fff 0%,#fff 76%,#f0f8f3 100%);
+}
+#project-cards .cup-redesign .project-meta {
+  align-items:center;gap:12px;
+}
+#project-cards .cup-redesign .status-chip {
+  background:#f5efdf;color:#876128;
+  border-radius:100px;padding:7px 10px;
+  font-size:9px;letter-spacing:.065em;
+}
+#project-cards .cup-redesign .status-chip::before {
+  content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  margin-right:6px;background:#e9b547;vertical-align:middle;
+}
+#project-cards .cup-redesign .project-body h3 {
+  font-family:Manrope,system-ui,sans-serif;
+  letter-spacing:-.055em;line-height:1.23;color:#072c32;
+  margin-top:21px;
+}
+#project-cards .cup-redesign .tag-row {gap:7px;}
+#project-cards .cup-redesign .tag-row a {
+  display:inline-flex;align-items:center;
+  min-height:30px;padding:7px 9px;
+  border:1px solid #d8eee1;border-radius:8px;
+  background:#ecf8f1;color:#174e42;
+  font-size:10px;font-weight:800;letter-spacing:-.015em;
+}
+#project-cards .cup-redesign .tag-row a:hover {
+  background:#d9f0e5;border-color:#9ad0b6;
+}
+#project-cards .cup-redesign .project-body > p {
+  color:#50646b;line-height:1.72;margin:20px 0 23px;
+}
+#project-cards .cup-redesign .project-cta {
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 17px;border:1px solid #064a42;border-radius:999px;
+  background:linear-gradient(135deg,#076c5a,#032f32);
+  box-shadow:0 8px 19px rgba(4,93,77,.14);
+  color:#fff;font-weight:800;font-size:12px;text-decoration:none;
+  transition:background .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+#project-cards .cup-redesign .project-cta:hover {
+  color:#fff;background:#075c4a;
+  transform:translateY(-1px);box-shadow:0 10px 22px rgba(4,93,77,.23);
+}
+@media(max-width:760px){
+  #project-cards .cup-redesign .cup-circle strong{font-size:35px;}
+  #project-cards .cup-redesign .cup-cover-stats{margin-top:29px;}
+  #project-cards .cup-redesign .cup-art{object-position:60% center;}
+}
+@media(max-width:375px){
+  #project-cards .cup-redesign .cover-header{font-size:7px;}
+  #project-cards .cup-redesign .cup-circle strong{font-size:31px;}
+  #project-cards .cup-redesign .cup-cover-stats > span{font-size:19px;}
+  #project-cards .cup-redesign .tag-row a{font-size:9px;}
+}
+@media(prefers-reduced-motion:reduce){
+  #project-cards .cup-redesign .cup-art,
+  #project-cards .cup-redesign .cover-corner,
+  #project-cards .cup-redesign .project-cta{transition:none;}
+  #project-cards .cup-redesign:hover .cup-art{transform:scale(1.01);}
+}
