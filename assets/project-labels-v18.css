@@ -1,4 +1,4 @@
-/* V18: rótulos legíveis e números consistentes nos quatro cartões. */
+/* V19: melhoria de legibilidade dos rótulos nos quatro cartões (desktop e celular). */
 #project-cards .project-cover .cover-header {
   position:absolute;
   top:21px;
@@ -9,9 +9,9 @@
   justify-content:space-between;
   align-items:flex-start;
   gap:12px;
-  font-size:clamp(12px, 1.15vw, 14px);
-  line-height:1.32;
-  letter-spacing:.08em;
+  font-size:clamp(14px, 1.15vw, 17px);
+  line-height:1.35;
+  letter-spacing:.05em;
   font-weight:800;
 }
 #project-cards .project-cover .cover-header span {
@@ -19,6 +19,16 @@
 }
 #project-cards .project-cover .cover-header span:last-child {
   text-align:right;
+}
+#project-cards .project-meta .number {
+  font-size:clamp(12px, 1vw, 14px);
+  letter-spacing:.07em;
+  line-height:1.35;
+}
+#project-cards .project-meta .status-chip {
+  font-size:12px;
+  letter-spacing:.04em;
+  line-height:1.3;
 }
 #project-cards .cup-redesign .cover-header,
 #project-cards .city-cover .cover-header {
@@ -44,12 +54,21 @@
   color:#FFFFFF;
   text-shadow:0 2px 5px rgba(0,0,0,.78);
 }
+#project-cards .titanic-cover .cover-header span:first-child {
+  background:rgba(2,12,23,.58);
+  border-radius:5px;
+  padding:5px 7px;
+  margin:-5px 0 -5px -7px;
+}
 @media(max-width:410px) {
   #project-cards .project-cover .cover-header {
     left:17px;
     right:17px;
-    font-size:12px;
-    letter-spacing:.045em;
+    font-size:13px;
+    letter-spacing:.025em;
     gap:8px;
+  }
+  #project-cards .project-meta .status-chip {
+    font-size:11px;
   }
 }
