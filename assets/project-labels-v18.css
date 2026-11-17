@@ -1,0 +1,55 @@
+/* V18: rótulos legíveis e números consistentes nos quatro cartões. */
+#project-cards .project-cover .cover-header {
+  position:absolute;
+  top:21px;
+  left:24px;
+  right:24px;
+  z-index:5;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  font-size:clamp(12px, 1.15vw, 14px);
+  line-height:1.32;
+  letter-spacing:.08em;
+  font-weight:800;
+}
+#project-cards .project-cover .cover-header span {
+  display:block;
+}
+#project-cards .project-cover .cover-header span:last-child {
+  text-align:right;
+}
+#project-cards .cup-redesign .cover-header,
+#project-cards .city-cover .cover-header {
+  color:#F2FFF8;
+  text-shadow:0 1px 5px rgba(0,0,0,.68);
+}
+#project-cards .idhm-cover .cover-header {
+  color:#103E35;
+  text-shadow:0 1px 4px rgba(240,255,249,.68);
+}
+#project-cards .titanic-cover::after {
+  content:"";
+  position:absolute;
+  z-index:1;
+  top:0;
+  right:0;
+  left:0;
+  height:110px;
+  background:linear-gradient(180deg,rgba(2,12,23,.68),rgba(2,12,23,0));
+  pointer-events:none;
+}
+#project-cards .titanic-cover .cover-header {
+  color:#FFFFFF;
+  text-shadow:0 2px 5px rgba(0,0,0,.78);
+}
+@media(max-width:410px) {
+  #project-cards .project-cover .cover-header {
+    left:17px;
+    right:17px;
+    font-size:12px;
+    letter-spacing:.045em;
+    gap:8px;
+  }
+}
