@@ -118,3 +118,38 @@
 @media (max-width: 590px) {
   .about-v14-content .about-v14-tags { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Vertical personal section: photograph, introduction, then stacked interests. */
+.about-v14-card {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 720px;
+  margin-inline: auto;
+  gap: 26px;
+  padding: clamp(20px, 3vw, 32px);
+}
+.about-v14-photo {
+  aspect-ratio: 4 / 3;
+  object-position: center;
+}
+.about-v14-description {
+  font-size: 17px;
+  line-height: 1.75;
+}
+.about-v14-content .about-v14-tags {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 26px;
+}
+.about-v14-content .about-v14-tag {
+  justify-content: flex-start;
+  gap: 14px;
+  min-height: 58px;
+  padding: 14px 20px;
+  background: #e7f5ef;
+}
+.about-v14-content .about-v14-tag span { font-size: 16px; }
+.about-v14-content .about-v14-tag svg { width: 26px; height: 26px; }
+@media (max-width: 590px) {
+  .about-v14-description { font-size: 16px; }
+  .about-v14-card { gap: 22px; }
+}
