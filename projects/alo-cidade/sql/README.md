@@ -1,9 +1,10 @@
 # Consultas SQL — Alô, Cidade!
 
-Este diretório contém **consultas executadas e validadas no MySQL 8**, organizadas segundo o fluxo real da investigação.
+Este diretório reúne **consultas já executadas e conferidas** e **consultas adicionais preparadas para MySQL 8**, organizadas segundo o fluxo real da investigação. O status distingue verificações concluídas das etapas ainda pendentes.
 
 | Arquivo | O que demonstra | Status |
 |---|---|---|
+| `00_checklist_recebimento.sql` | Metadados (`information_schema`), volumetria, datas, horários, vazios, protocolos e categorias | Script inicial somente leitura; auditoria parcial |
 | `01_perfil_e_qualidade.sql` | Contagens, `CASE`, valores ausentes | Validado |
 | `02_duplicidades.sql` | CTEs, granularidade, `SHA2`, `JSON_OBJECT` | Validado |
 | `03_datas_horarios.sql` | `STR_TO_DATE`, `TRIM`, `REGEXP` | Validado |
