@@ -27,6 +27,34 @@ Antes de construir indicadores, é necessário identificar a unidade de análise
 
 ## 2. A solução e o processo | THE APPROACH
 
+### Checklist de boas práticas — antes da primeira análise
+
+Uma etapa explícita de **recebimento e auditoria** evita transformar problemas da base em indicadores incorretos. Este checklist é reutilizável, mas seu status mostra **somente o que foi verificado neste projeto**:
+
+- [x] **Receber e preservar a origem:** identificar a fonte oficial, registrar o recorte e não alterar o arquivo original.
+- [x] **Conferir linhas e colunas:** inventariar os **41.490 registros e 21 campos**.
+- [ ] **Inspecionar tipos de dados:** confrontar os tipos SQL com os tipos esperados; `DATA` e `HORARIO` exigem conversão, e a revisão dos demais campos continua.
+- [x] **Validar datas e horários:** 31 dias de observação e **41.490 horários válidos após `TRIM`**.
+- [x] **Investigar chaves e duplicados:** **39.451 solicitações distintas**; **2.030 protocolos repetidos**, sem excluir versões de resposta.
+- [ ] **Auditar nulos e vazios em todas as colunas:** `ORGAO` tem 16.875 ausências e `BAIRRO_ASS` tem 71; a auditoria completa ainda é pendente.
+- [ ] **Inspecionar categorias e codificação:** grafias e acentos exigem revisão antes da padronização.
+- [x] **Comparar a consistência entre linhas:** campos-chave dos protocolos repetidos foram auditados.
+- [x] **Proteger dados e documentar decisões:** a base individual não é publicada; consultas e agregados são apresentados com limitações.
+
+`[x]` = verificado nesta etapa; `[ ]` = verificação parcial ou pendente. A regra é **não apagar registros nem imputar valores automaticamente**.
+
+**Exemplo de SQL — inspecionar o esquema antes de analisar:**
+
+```sql
+SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = 'modulosql'
+  AND TABLE_NAME = 'chamados156'
+ORDER BY ORDINAL_POSITION;
+```
+
+[Script completo do diagnóstico inicial](sql/00_checklist_recebimento.sql) · [Checklist visual na página](index.html#data-checklist)
+
 ### Ferramentas utilizadas
 
 | Ferramenta | Utilização |
