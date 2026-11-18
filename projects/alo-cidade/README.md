@@ -68,7 +68,32 @@ FROM modulosql.chamados156;
 
 **Resultado:** 41.490 registros e 39.451 solicitações distintas. A contagem por protocolo é a unidade usada nas análises temporais abaixo.
 
-### Exemplo 2 — Preparar horários e analisar a demanda
+### Exemplo 2 — Auditar protocolos repetidos com função de janela
+
+O uso de `ROW_NUMBER() OVER (PARTITION BY SOLICITACAO ORDER BY id)` identifica linhas adicionais sem presumir que são cópias integrais:
+
+```sql
+WITH protocolos AS (
+    SELECT SOLICITACAO, id,
+           ROW_NUMBER() OVER (
+               PARTITION BY SOLICITACAO ORDER BY id
+           ) AS rn,
+           COUNT(*) OVER (
+               PARTITION BY SOLICITACAO
+           ) AS registros_no_protocolo
+    FROM modulosql.chamados156
+)
+SELECT COUNT(*) AS registros,
+       COUNT(DISTINCT SOLICITACAO) AS protocolos,
+       COUNT(DISTINCT CASE WHEN registros_no_protocolo > 1
+           THEN SOLICITACAO END) AS protocolos_repetidos,
+       SUM(CASE WHEN rn > 1 THEN 1 ELSE 0 END) AS linhas_adicionais
+FROM protocolos;
+```
+
+**Conciliação:** 2.023 protocolos com duas linhas, cinco com três e dois com quatro produzem **2.030 protocolos repetidos**, mas **2.039 linhas adicionais** (`2023 + 5×2 + 2×3`). Nem toda linha adicional é redundante. [Script SQL](sql/06_window_functions_auditoria.sql).
+
+### Exemplo 3 — Preparar horários e analisar a demanda
 
 ```sql
 SELECT
@@ -81,7 +106,7 @@ ORDER BY hora_do_dia;
 
 **Decisão técnica:** `HORARIO` é armazenado como texto, com espaços adicionais; o `TRIM` evita resultados incorretos na conversão. A função `COUNT(DISTINCT ...)` impede contar uma solicitação repetida como demanda adicional.
 
-### Exemplo 3 — CTEs, JOIN e normalização por dia observado
+### Exemplo 4 — CTEs, JOIN e normalização por dia observado
 
 A consulta que produziu o mapa de calor usa duas CTEs e divide a quantidade de solicitações por hora pela quantidade de ocorrências daquele dia da semana. Isso evita comparar diretamente quatro quintas-feiras com cinco segundas-feiras.
 
@@ -127,11 +152,28 @@ O maior pico médio foi **segunda-feira, às 10h (147,2 solicitações por segun
 
 A auditoria identificou **2.030 solicitações com múltiplos registros**, **372 registros integralmente redundantes (exceto `id`)** e **40,67% das linhas com `ORGAO` não preenchido**. Esses achados motivaram a decisão de separar **registros** de **solicitações distintas**, sem presumir que toda repetição fosse um erro.
 
+### Descoberta 05 — Morcegos: onde e em quais horários os chamados foram registrados?
+
+A consulta `SUBDIVISAO = 'Morcegos'` encontrou **97 registros e 95 solicitações distintas**, em **47 bairros**. Destas, **46 (48,4%)** pertencem à **Regional Matriz**, contra uma participação da Matriz de **20,9%** no total de protocolos da Central 156. Esse contraste indica concentração relativa dos registros, não maior presença comprovada de animais ou doenças.
+
+| Bairro | Solicitações |
+|---|---:|
+| Centro | 14 |
+| Batel | 9 |
+| Cajuru | 6 |
+| Cristo Rei | 5 |
+
+**Horários registrados:** 06h–11h59 (39), 12h–17h59 (27), 18h–23h59 (26) e 00h–05h59 (3). O maior volume em uma hora foi às **09h (11 solicitações)**. Esses são horários de registro de solicitações, **não necessariamente de avistamento do animal**.
+
+**Possível encaminhamento a ser avaliado:** analisar o alcance de orientações preventivas e o monitoramento de relatos nas áreas com mais registros, acompanhando dados de períodos adicionais e informações da vigilância. A [Unidade de Vigilância de Zoonoses de Curitiba](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) orienta não manipular morcegos em situações incomuns e contatar o 156. A base não contém casos confirmados de raiva.
+
+**[Ver as consultas SQL da descoberta](sql/07_morcegos_geografia_horarios.sql).** Essas consultas foram reproduzidas na cópia CSV carregada em SQL local; os arquivos compatíveis com MySQL 8 ainda não foram reexecutados no servidor original.
+
 ### Interpretação e limitações
 
-Os resultados descrevem o **intervalo de 01/04 a 01/05/2024**. Não demonstram, por si só, demanda anual, causas das diferenças entre horários ou desempenho operacional da Central 156. Os dados não permitem inferir tempos de resolução. Análises por categoria, órgão, bairro e regional permanecem em desenvolvimento.
+Os resultados descrevem o **intervalo de 01/04 a 01/05/2024**. Não demonstram, por si só, demanda anual, causas das diferenças entre horários ou desempenho operacional da Central 156. Os dados não permitem inferir tempos de resolução. Outras análises por categoria, órgão, bairro e regional são os próximos passos.
 
-**Próximas descobertas:** principais assuntos, distribuição territorial, órgãos responsáveis e concentração de chamados relacionados a morcegos — sempre após validação em SQL.
+**Próximos passos:** aprofundar os assuntos mais frequentes, comparar a distribuição territorial por categorias e estudar os órgãos responsáveis, com validação em SQL.
 
 ---
 
