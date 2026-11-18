@@ -163,11 +163,29 @@ A consulta `SUBDIVISAO = 'Morcegos'` encontrou **97 registros e 95 solicitaçõe
 | Cajuru | 6 |
 | Cristo Rei | 5 |
 
-**Horários registrados:** 06h–11h59 (39), 12h–17h59 (27), 18h–23h59 (26) e 00h–05h59 (3). O maior volume em uma hora foi às **09h (11 solicitações)**. Esses são horários de registro de solicitações, **não necessariamente de avistamento do animal**.
+#### Quando os chamados foram registrados?
 
-**Possível encaminhamento a ser avaliado:** analisar o alcance de orientações preventivas e o monitoramento de relatos nas áreas com mais registros, acompanhando dados de períodos adicionais e informações da vigilância. A [Unidade de Vigilância de Zoonoses de Curitiba](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) orienta não manipular morcegos em situações incomuns e contatar o 156. A base não contém casos confirmados de raiva.
+| Faixa horária | Solicitações distintas | Participação |
+|---|---:|---:|
+| Madrugada (00h–05h59) | 3 | 3,2% |
+| Manhã (06h–11h59) | 39 | 41,1% |
+| Tarde (12h–17h59) | 27 | 28,4% |
+| Noite (18h–23h59) | 26 | 27,4% |
+| **Total** | **95** | **100% (aprox.)** |
 
-**[Ver as consultas SQL da descoberta](sql/07_morcegos_geografia_horarios.sql).** Essas consultas foram reproduzidas na cópia CSV carregada em SQL local; os arquivos compatíveis com MySQL 8 ainda não foram reexecutados no servidor original.
+O maior volume em uma hora foi registrado às **09h (11 solicitações)**. `HORARIO` representa o momento do registro da solicitação, **não necessariamente o avistamento do morcego**.
+
+#### Comparação territorial normalizada
+
+Na Regional Matriz, houve aproximadamente **5,59 solicitações sobre morcegos por mil protocolos do 156**, contra **1,57 por mil nas demais regionais juntas** — uma frequência relativa cerca de **3,6 vezes maior**. A comparação utiliza o total de solicitações do serviço 156 como denominador, **não a população residente**; portanto não mede a quantidade de morcegos, a exposição de moradores ou a incidência de doenças.
+
+#### Implicações para a saúde pública
+
+Os dados identificam áreas com mais solicitações registradas, mas não demonstram ocorrência de casos de raiva. Como **possível encaminhamento para avaliação técnica**, esses registros podem ser cruzados com informações de vigilância e de outros períodos para examinar a cobertura de orientações preventivas e o monitoramento dos relatos.
+
+A [Unidade de Vigilância de Zoonoses de Curitiba](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) orienta evitar manusear morcegos encontrados em situações incomuns e solicitar atendimento especializado pelo 156, quando aplicável.
+
+**[Consultar as consultas SQL sobre morcegos](sql/07_morcegos_geografia_horarios.sql).** As agregações foram conferidas na cópia CSV carregada em SQL local; os arquivos compatíveis com MySQL 8 ainda não foram reexecutados no servidor original.
 
 ### Interpretação e limitações
 
