@@ -25,6 +25,34 @@ This first release covers structural and quality checks, record granularity, and
 
 ## 2. The Approach
 
+### Data intake and quality checklist — before the first analysis
+
+Before calculating metrics, the dataset is profiled and audited. The status below refers **only to checks documented for this project**:
+
+- [x] **Identify the source and preserve the original:** record the official source and observation window; do not overwrite raw data.
+- [x] **Inventory rows and columns:** **41,490 records across 21 fields**.
+- [ ] **Review data types:** compare SQL storage types with expected semantic types; `DATA` and `HORARIO` require parsing, while a complete review is pending.
+- [x] **Validate dates and times:** 31 calendar days; **41,490 valid time values after `TRIM`**.
+- [x] **Investigate keys and duplicates:** **39,451 distinct requests**, with **2,030 repeated request IDs**; preserve different response versions.
+- [ ] **Audit nulls and blanks across every column:** `ORGAO` has 16,875 missing values and `BAIRRO_ASS` has 71; full-column coverage remains pending.
+- [ ] **Review categories and encoding:** investigate spelling and accented-character issues before standardizing.
+- [x] **Check consistency across records:** key fields for repeated request IDs were compared.
+- [x] **Protect sensitive data and document decisions:** raw individual-level records are not published; aggregated results and SQL scripts are documented.
+
+`[x]` = verified; `[ ]` = partially checked or pending. No record is deleted and no missing value is filled automatically.
+
+**SQL example — inspect the database schema first:**
+
+```sql
+SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE
+FROM information_schema.COLUMNS
+WHERE TABLE_SCHEMA = 'modulosql'
+  AND TABLE_NAME = 'chamados156'
+ORDER BY ORDINAL_POSITION;
+```
+
+[Full initial profiling SQL](sql/00_checklist_recebimento.sql) · [Visual checklist on the project page](index.html#data-checklist)
+
 ### Tools used
 
 | Tool | Role |
