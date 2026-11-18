@@ -139,11 +139,29 @@ Filtering `SUBDIVISAO = 'Morcegos'` found **97 records representing 95 distinct 
 | Cajuru | 6 |
 | Cristo Rei | 5 |
 
-Reports by recorded time: 6–11:59 a.m. (39), noon–5:59 p.m. (27), 6–11:59 p.m. (26), and midnight–5:59 a.m. (3). The largest single hour was **9 a.m. (11 requests)**. Recorded times do not necessarily represent the time of the actual sighting.
+#### When were the requests logged?
 
-One option for technical assessment is to examine the coverage of existing public guidance and surveillance where more reports were filed, with validation across additional periods. Curitiba's [Zoonosis Surveillance Unit](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) provides guidance on unusual bat encounters. These data do not measure rabies cases.
+| Time period | Distinct requests | Share |
+|---|---:|---:|
+| Overnight (00:00–05:59) | 3 | 3.2% |
+| Morning (06:00–11:59) | 39 | 41.1% |
+| Afternoon (12:00–17:59) | 27 | 28.4% |
+| Evening (18:00–23:59) | 26 | 27.4% |
+| **Total** | **95** | **~100%** |
 
-[View the SQL queries](sql/07_morcegos_geografia_horarios.sql). The aggregation was replicated using the exported CSV in a local SQL database. The compatible MySQL 8 file has not been rerun against the original server.
+The busiest individual hour was **9 a.m. (11 requests)**. The recorded time refers to when the request was logged, **not necessarily when the bat was sighted**.
+
+#### Normalized geographic comparison
+
+The Matriz district recorded approximately **5.59 bat-related requests per 1,000 requests to the 156 service**, versus **1.57 per 1,000 in all other districts combined** — roughly **3.6 times the relative frequency**. This denominator is the number of 156 requests, **not the resident population**. It cannot measure bat abundance, human exposure or disease incidence.
+
+#### Public-health implications
+
+These data identify where more requests were registered; they do not establish any confirmed rabies cases. One **option for technical assessment** is to compare these reports with surveillance information and additional periods to examine the reach of public guidance and follow-up monitoring.
+
+Curitiba's [Zoonosis Surveillance Unit](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) advises residents not to handle bats found in unusual circumstances and to request specialized assistance via the 156 service where appropriate.
+
+**[View the bat-analysis SQL queries](sql/07_morcegos_geografia_horarios.sql).** The aggregations were checked in a local SQL database using the exported CSV; the MySQL 8-compatible scripts have not been rerun against the original server.
 
 ### Limitations and next steps
 
