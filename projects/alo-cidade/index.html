@@ -51,6 +51,40 @@ footer{padding:36px 0;border-top:1px solid var(--stroke);color:var(--muted);font
 .discovery-card strong{display:block;color:var(--aqua);font-size:1.8rem;line-height:1.2}
 .discovery-card small{display:block;color:var(--muted);font-size:.78rem;margin-top:5px}
 @media(max-width:650px){.discovery-cards{grid-template-columns:1fr 1fr}}
+
+/* Projeto 03 — Resultados de morcegos: blocos visuais com proporcoes verificaveis */
+.bat-times-block{margin:27px 0 24px;padding:22px;border:1px solid var(--stroke);border-radius:14px;background:#101f30}
+.bat-times-block h4,.bat-territory h4,.bat-public-health h4{font-size:1.12rem;line-height:1.35;margin:0 0 9px;color:var(--ink)}
+.bat-times-block .bat-subtitle,.bat-territory .bat-subtitle{color:var(--muted);font-size:.88rem;line-height:1.6;margin:0 0 19px}
+.bat-period-list{display:grid;gap:16px}
+.bat-period{display:grid;grid-template-columns:minmax(122px,150px) minmax(80px,1fr) minmax(82px,110px);align-items:center;gap:12px}
+.bat-period-label{color:#e3edf6;font-size:.88rem;font-weight:700}
+.bat-period-track{height:11px;border-radius:99px;background:#2b4052;overflow:hidden}
+.bat-period-fill{display:block;height:100%;border-radius:99px;background:#65bed3}
+.bat-period--primary .bat-period-fill{background:var(--aqua)}
+.bat-period-value{color:#eef8f9;font-size:.88rem;font-weight:750;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.bat-times-foot{border-top:1px solid var(--stroke);padding-top:13px;margin:19px 0 0!important;color:#b8ced7!important;font-size:.85rem!important;line-height:1.6!important}
+.bat-territory{margin:22px 0;padding:0 2px}
+.bat-ratio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:13px 0 10px}
+.bat-ratio-card{border:1px solid var(--stroke);background:#12273a;border-radius:12px;padding:17px 18px}
+.bat-ratio-card strong{display:block;font-size:1.95rem;line-height:1.1;letter-spacing:-.05em;color:#9adeda}
+.bat-ratio-card small{display:block;font-size:.8rem;color:#bccfda;margin-top:8px}
+.bat-ratio-card:nth-child(2) strong{color:#a4b9cb}
+.bat-territory .bat-caption{color:#a9c0ca;font-size:.81rem;line-height:1.6;margin:8px 0 0}
+.bat-public-health{padding:22px 23px;margin:23px 0 18px;border:1px solid #355b66;border-left:4px solid var(--aqua);border-radius:12px;background:#102d39}
+.bat-public-health p{color:#d2e4e9!important;margin:8px 0 12px!important}
+.bat-public-health ul{margin:10px 0 0;padding-left:21px;color:#deedf2}
+.bat-public-health li{margin:5px 0;font-size:.92rem}
+.bat-resources{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 4px}
+.bat-resources a{display:inline-flex;align-items:center;padding:8px 12px;text-decoration:none;border:1px solid #39646a;border-radius:8px;font-size:.85rem;font-weight:700;color:#91eadc}
+.bat-resources a:hover{background:#183a44;color:#d9fff7}
+@media(max-width:650px){
+  .bat-period{grid-template-columns:minmax(90px,104px) minmax(45px,1fr) minmax(72px,90px);gap:8px}
+  .bat-period-label,.bat-period-value{font-size:.77rem}
+  .bat-times-block{padding:17px}
+  .bat-ratio-grid{grid-template-columns:1fr}
+  .bat-public-health{padding:18px}
+}
 </style>
 </head>
 <body>
@@ -131,11 +165,44 @@ ORDER BY dia_numero, hora_do_dia;</code></pre>
 </div>
 <table class="study-table"><thead><tr><th data-pt="Bairro" data-en="Neighborhood">Bairro</th><th data-pt="Solicitações" data-en="Requests">Solicitações</th></tr></thead>
 <tbody><tr><td>Centro</td><td>14</td></tr><tr><td>Batel</td><td>9</td></tr><tr><td>Cajuru</td><td>6</td></tr><tr><td>Cristo Rei</td><td>5</td></tr></tbody></table>
-<p data-lang="pt"><strong>Horários:</strong> 39 solicitações entre 06h e 11h59; 27 entre 12h e 17h59; 26 entre 18h e 23h59; e 3 entre 00h e 05h59. A Regional Matriz registrou cerca de 5,59 solicitações dessa categoria por mil protocolos do 156, contra 1,57 nas demais regionais somadas.</p>
-<p data-lang="en"><strong>Times:</strong> 39 requests from 6–11:59 a.m.; 27 from noon–5:59 p.m.; 26 from 6–11:59 p.m.; and 3 overnight. Matriz recorded approximately 5.59 bat-related requests per 1,000 municipal 156 requests, versus 1.57 in the remaining districts combined.</p>
-<p data-lang="pt"><strong>Possível encaminhamento para avaliação técnica:</strong> comparar a cobertura de orientações preventivas nos bairros com mais relatos, monitorando novos protocolos, contatos efetivos com animais e ações da vigilância. A prefeitura orienta não tocar em morcegos em situações incomuns e acionar o 156 para atendimento especializado. Chamados não medem a quantidade de morcegos nem casos de raiva.</p>
-<p data-lang="en"><strong>Option for technical assessment:</strong> examine the coverage of public-safety guidance in neighborhoods with more reports while tracking future requests, documented animal contact and zoonosis surveillance. Municipal guidance advises residents not to touch bats in unusual circumstances and to contact the 156 service. Request counts do not measure bat populations or rabies cases.</p>
-<p class="fine"><a href="sql/07_morcegos_geografia_horarios.sql" data-pt="Ver SQL da descoberta ↗" data-en="View discovery SQL ↗">Ver SQL da descoberta ↗</a> · <a href="https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603" target="_blank" rel="noopener noreferrer" data-pt="Orientação da Vigilância de Zoonoses ↗" data-en="Municipal zoonosis guidance ↗">Orientação da Vigilância de Zoonoses ↗</a></p>
+<div class="bat-times-block">
+<h4 data-lang="pt">Quando os chamados foram registrados?</h4>
+<h4 data-lang="en">When were the requests logged?</h4>
+<p class="bat-subtitle" data-lang="pt">Distribuição das 95 solicitações distintas por período do dia.</p>
+<p class="bat-subtitle" data-lang="en">Distribution of 95 distinct requests by time of day.</p>
+<div class="bat-period-list">
+<div class="bat-period"><span class="bat-period-label" data-lang="pt">Madrugada<br>00h–05h59</span><span class="bat-period-label" data-lang="en">Overnight<br>00:00–05:59</span><div class="bat-period-track" aria-hidden="true"><span class="bat-period-fill" style="width:3.2%"></span></div><span class="bat-period-value">3 · 3,2%</span></div>
+<div class="bat-period bat-period--primary"><span class="bat-period-label" data-lang="pt">Manhã<br>06h–11h59</span><span class="bat-period-label" data-lang="en">Morning<br>06:00–11:59</span><div class="bat-period-track" aria-hidden="true"><span class="bat-period-fill" style="width:41.1%"></span></div><span class="bat-period-value">39 · 41,1%</span></div>
+<div class="bat-period"><span class="bat-period-label" data-lang="pt">Tarde<br>12h–17h59</span><span class="bat-period-label" data-lang="en">Afternoon<br>12:00–17:59</span><div class="bat-period-track" aria-hidden="true"><span class="bat-period-fill" style="width:28.4%"></span></div><span class="bat-period-value">27 · 28,4%</span></div>
+<div class="bat-period"><span class="bat-period-label" data-lang="pt">Noite<br>18h–23h59</span><span class="bat-period-label" data-lang="en">Evening<br>18:00–23:59</span><div class="bat-period-track" aria-hidden="true"><span class="bat-period-fill" style="width:27.4%"></span></div><span class="bat-period-value">26 · 27,4%</span></div>
+</div>
+<p class="bat-times-foot" data-lang="pt"><strong>Principal horário:</strong> 09h, com 11 solicitações. O dado registra o horário do chamado, não o momento do avistamento nem o período de atividade dos morcegos.</p>
+<p class="bat-times-foot" data-lang="en"><strong>Peak hour:</strong> 9 a.m., with 11 requests. This records when the request was logged, not when the animal was sighted or active.</p>
+</div>
+<div class="bat-territory">
+<h4 data-lang="pt">A concentração é maior na Regional Matriz?</h4>
+<h4 data-lang="en">Is there a greater concentration in Matriz?</h4>
+<p class="bat-subtitle" data-lang="pt">Para comparar áreas com diferentes volumes totais de chamados, calculamos os relatos de morcegos por mil solicitações do 156.</p>
+<p class="bat-subtitle" data-lang="en">To compare areas with different overall request volumes, we calculated bat-related reports per 1,000 municipal 156 requests.</p>
+<div class="bat-ratio-grid">
+<div class="bat-ratio-card"><strong>5,59</strong><small data-lang="pt">Regional Matriz · por mil solicitações</small><small data-lang="en">Matriz district · per 1,000 requests</small></div>
+<div class="bat-ratio-card"><strong>1,57</strong><small data-lang="pt">Demais regionais juntas · por mil solicitações</small><small data-lang="en">All other districts combined · per 1,000 requests</small></div>
+</div>
+<p class="bat-caption" data-lang="pt">A frequência relativa foi aproximadamente 3,6 vezes maior na Matriz. O indicador mede a participação dessa categoria entre os chamados recebidos, não o número de animais, a exposição dos moradores ou o risco de doenças.</p>
+<p class="bat-caption" data-lang="en">The relative frequency was approximately 3.6 times higher in Matriz. This measures the category's share of logged requests, not bat populations, resident exposure or disease risk.</p>
+</div>
+<div class="bat-public-health">
+<h4 data-lang="pt">Implicações para a saúde pública</h4>
+<h4 data-lang="en">Public-health implications</h4>
+<p data-lang="pt">Os dados identificam locais onde houve mais relatos ao 156. Como possível encaminhamento para avaliação pelas equipes municipais, esses registros podem ser cruzados com informações da vigilância e de períodos adicionais para orientar a cobertura de ações educativas e de monitoramento.</p>
+<p data-lang="en">The data identify where more requests were submitted through the 156 service. For municipal technical assessment, they could be compared with surveillance records and additional periods to examine the coverage of public guidance and monitoring activities.</p>
+<p data-lang="pt">A orientação oficial é evitar tocar ou tentar capturar morcegos em situações incomuns e solicitar atendimento especializado pelo 156 quando aplicável. Os registros analisados não permitem afirmar ocorrência de casos de raiva.</p>
+<p data-lang="en">Official guidance advises against touching or attempting to capture bats in unusual situations and directs residents to the 156 service for specialized assistance where appropriate. These records do not establish any confirmed rabies cases.</p>
+</div>
+<div class="bat-resources">
+<a href="sql/07_morcegos_geografia_horarios.sql" data-pt="Consultar código SQL ↗" data-en="View SQL queries ↗">Consultar código SQL ↗</a>
+<a href="https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603" target="_blank" rel="noopener noreferrer" data-pt="Orientações oficiais da Vigilância de Zoonoses ↗" data-en="Official zoonosis surveillance guidance ↗">Orientações oficiais da Vigilância de Zoonoses ↗</a>
+</div>
 </div><div class="note" data-lang="pt"><strong>Limitações:</strong> o período observado é 01/04–01/05/2024. Trata-se de registros de solicitações, não de medições da fauna, casos de raiva ou indicadores de desempenho. Os padrões são descritivos e não demonstram causalidade.</div><div class="note" data-lang="en"><strong>Limitations:</strong> the observation window is Apr 1–May 1, 2024. Requests are not wildlife counts, confirmed rabies cases or service-performance measures. Findings are descriptive and do not establish causality.</div><div class="panel"><h3 data-lang="pt">Próximos passos</h3><h3 data-lang="en">Next steps</h3><p data-lang="pt">Aprofundar os rankings de assuntos, a análise por bairros e regionais, os órgãos responsáveis e a validação da codificação dos textos. Manter as consultas SQL reproduzíveis e documentadas.</p><p data-lang="en">Expand topic rankings, neighborhood and district comparisons, responsible-agency analysis and text-encoding validation, with reproducible and documented SQL queries.</p></div></section>
 </main><footer><div class="wrap"><div data-lang="pt">Projeto 03 · Alô, Cidade! · Versão parcial 0.1 · <a href="README.md">README completo</a></div><div data-lang="en">Project 03 · Hello, City! · Preliminary release 0.1 · <a href="README.en.md">Full README</a></div></div></footer>
 <script>
