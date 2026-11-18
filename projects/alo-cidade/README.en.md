@@ -64,6 +64,27 @@ SELECT
 FROM modulosql.chamados156;
 ```
 
+### SQL example — audit repeated request IDs with window functions
+
+A `ROW_NUMBER()` window lets us separate additional rows from distinct request IDs without assuming every repeated row is an exact duplicate:
+
+```sql
+WITH protocolos AS (
+    SELECT SOLICITACAO, id,
+        ROW_NUMBER() OVER (
+            PARTITION BY SOLICITACAO ORDER BY id
+        ) AS rn
+    FROM modulosql.chamados156
+)
+SELECT COUNT(*) AS records,
+       COUNT(DISTINCT SOLICITACAO) AS unique_requests,
+       SUM(CASE WHEN rn > 1 THEN 1 ELSE 0 END)
+           AS additional_rows
+FROM protocolos;
+```
+
+There are **2,030 repeated request IDs but 2,039 additional rows**, because 2,023 IDs occur twice, five three times, and two four times. Additional rows may contain different replies. [See complete window-function audit](sql/06_window_functions_auditoria.sql).
+
 ### SQL example — hourly distribution
 
 ```sql
@@ -107,9 +128,26 @@ The highest hourly weekday average occurred on **Monday at 10 a.m. (147.2)**, fo
 
 **2,030** request IDs occur in more than one record, **372** excess rows are fully redundant apart from `id`, and **40.67%** of records lack `ORGAO`. The project explicitly differentiates request IDs from raw rows.
 
+### Finding 05 — Bat-related service requests: geography and time of reporting
+
+Filtering `SUBDIVISAO = 'Morcegos'` found **97 records representing 95 distinct request IDs**, distributed over **47 neighborhoods**. Of those, **46 (48.4%)** were in **Matriz**, compared with Matriz's **20.9%** share of all 156 requests. This describes a concentration of reports, not a measured concentration of bats or confirmed illnesses.
+
+| Neighborhood | Requests |
+|---|---:|
+| Centro | 14 |
+| Batel | 9 |
+| Cajuru | 6 |
+| Cristo Rei | 5 |
+
+Reports by recorded time: 6–11:59 a.m. (39), noon–5:59 p.m. (27), 6–11:59 p.m. (26), and midnight–5:59 a.m. (3). The largest single hour was **9 a.m. (11 requests)**. Recorded times do not necessarily represent the time of the actual sighting.
+
+One option for technical assessment is to examine the coverage of existing public guidance and surveillance where more reports were filed, with validation across additional periods. Curitiba's [Zoonosis Surveillance Unit](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) provides guidance on unusual bat encounters. These data do not measure rabies cases.
+
+[View the SQL queries](sql/07_morcegos_geografia_horarios.sql). The aggregation was replicated using the exported CSV in a local SQL database. The compatible MySQL 8 file has not been rerun against the original server.
+
 ### Limitations and next steps
 
-This dataset covers **Apr 1–May 1, 2024** only. Results are descriptive, not causal, and cannot establish yearly patterns or operating performance. Analysis of topics, municipal agencies, neighborhoods and bat-related reports is forthcoming.
+This dataset covers **Apr 1–May 1, 2024** only. Results are descriptive, not causal, and cannot establish yearly patterns or operating performance. Further topic, agency and geographic analyses are planned as next steps.
 
 ---
 
