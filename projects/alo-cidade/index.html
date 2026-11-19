@@ -230,24 +230,58 @@ ORDER BY dia_numero, hora_do_dia;</code></pre>
 <p data-lang="pt"><strong>Reprodutibilidade:</strong> a consulta gera 167 combinações dia × hora, totalizando 39.451 solicitações. <a href="sql/04_heatmap.sql">Ver arquivo SQL completo</a>.</p>
 <p data-lang="en"><strong>Reproducibility:</strong> the query yields 167 weekday × hour combinations, summing to 39,451 requests. <a href="sql/04_heatmap.sql">View full SQL file</a>.</p>
 </div><p><a class="btn" href="README.md" data-lang="pt">Ver documentação SQL</a><a class="btn" href="README.en.md" data-lang="en">Read SQL documentation</a></p></section>
-<section id="results"><div class="num">3 / THE RESULTS</div><h2 class="section-title" data-lang="pt">Resultados e visualização</h2><h2 class="section-title" data-lang="en">The results</h2><p class="lead" data-lang="pt">Descobertas preliminares, baseadas em 39.451 solicitações distintas. Os gráficos mostram quando a demanda foi registrada no recorte analisado.</p><p class="lead" data-lang="en">Validated preliminary findings from 39,451 distinct requests. The charts show when requests were logged in the observed period.</p><div class="cols"><div class="panel"><h3 data-lang="pt">Pico por hora</h3><h3 data-lang="en">Peak hour</h3><div class="stat">10h</div><p data-lang="pt">3.520 solicitações distintas no período.</p><p data-lang="en">3,520 distinct requests during the study period.</p></div><div class="panel"><h3 data-lang="pt">Período 08h–17h59</h3><h3 data-lang="en">8 a.m.–5:59 p.m.</h3><div class="stat">73,6%</div><p data-lang="pt">das solicitações foram registradas nesse intervalo.</p><p data-lang="en">of requests were recorded in this interval.</p></div></div><figure><img src="assets/solicitacoes_por_hora.png" alt="Gráfico do total de solicitações por hora do dia"><figcaption data-lang="pt">Distribuição por hora, com contagem de solicitações distintas.</figcaption><figcaption data-lang="en">Hourly distribution, counting distinct requests.</figcaption></figure><div class="cols"><div class="panel"><h3 data-lang="pt">Maior média diária</h3><h3 data-lang="en">Highest daily average</h3><div class="stat" data-lang="pt">Quinta-feira</div><div class="stat" data-lang="en">Thursday</div><p>1.634,25 <span data-lang="pt">solicitações por quinta-feira observada</span><span data-lang="en">requests per observed Thursday</span></p></div><div class="panel"><h3 data-lang="pt">Menor média diária</h3><h3 data-lang="en">Lowest daily average</h3><div class="stat" data-lang="pt">Domingo</div><div class="stat" data-lang="en">Sunday</div><p>594,75 <span data-lang="pt">solicitações por domingo observado</span><span data-lang="en">requests per observed Sunday</span></p></div></div><figure><img src="assets/media_por_dia_semana.png" alt="Gráfico de média diária por dia da semana"><figcaption data-lang="pt">Médias divididas pela quantidade de cada dia da semana no período.</figcaption><figcaption data-lang="en">Daily averages normalized by the number of observed weekdays.</figcaption></figure><h3 data-lang="pt">Heatmap: quando os chamados se concentram?</h3><h3 data-lang="en">Heatmap: when do requests concentrate?</h3><p class="lead" data-lang="pt">O maior pico médio foi na segunda-feira às 10h (147,2 solicitações). Quinta-feira às 11h teve 146,25.</p><p class="lead" data-lang="en">The highest average was Monday at 10 a.m. (147.2 requests), closely followed by Thursday at 11 a.m. (146.25).</p><figure><img src="assets/heatmap_dia_hora.png" alt="Mapa de calor de solicitações por dia da semana e hora"><figcaption data-lang="pt">Média de solicitações por ocorrência de dia da semana e hora. Células sem registros = zero.</figcaption><figcaption data-lang="en">Average requests per observed weekday and hour. Missing combinations are shown as zero.</figcaption></figure><div id="bats-findings" class="panel">
-<div class="num">DISCOVERY / 04 · 156 + ZOONOSES</div>
-<h3 data-lang="pt">Morcegos: concentração territorial e horários dos relatos</h3>
-<h3 data-lang="en">Bats: where and when reports were registered</h3>
-<p data-lang="pt">Filtrando <code>SUBDIVISAO = 'Morcegos'</code>, identificamos 97 registros, correspondentes a <strong>95 solicitações distintas</strong> em 47 bairros. O horário identifica o registro do chamado, não necessariamente quando o animal foi visto.</p>
-<p data-lang="en">Filtering <code>SUBDIVISAO = 'Morcegos'</code> yields 97 rows, corresponding to <strong>95 distinct requests</strong> across 47 neighborhoods. The time is when a request was recorded, not necessarily when the bat was seen.</p>
-<div class="discovery-cards">
-  <div class="discovery-card"><strong>95</strong><small data-lang="pt">solicitações distintas</small><small data-lang="en">distinct requests</small></div>
-  <div class="discovery-card"><strong>46</strong><small data-lang="pt">na Regional Matriz (48,4%)</small><small data-lang="en">in Matriz district (48.4%)</small></div>
-  <div class="discovery-card"><strong>09h</strong><small data-lang="pt">maior volume: 11 solicitações</small><small data-lang="en">peak hour: 11 requests</small></div>
+<section id="results">
+<div class="num">3 / THE RESULTS</div><h2 class="section-title"><span data-pt="Resultados e visualizações" data-en="Results and visualizations">Resultados e visualizações</span></h2>
+<p class="lead results-intro"><span data-pt="Descobertas descritivas baseadas em 39.451 solicitações distintas. Os indicadores destacam o essencial; os gráficos mostram a evidência." data-en="Descriptive findings based on 39,451 distinct requests. KPIs highlight the main points, while charts show the evidence.">Descobertas descritivas baseadas em 39.451 solicitações distintas. Os indicadores destacam o essencial; os gráficos mostram a evidência.</span></p>
+<div class="finding-section" id="finding-hours">
+<span class="finding-eyebrow">3.1 / HOURLY DEMAND</span>
+<h3 class="finding-title"><span data-pt="Em quais horários a demanda se concentra?" data-en="When are requests most frequent?">Em quais horários a demanda se concentra?</span></h3>
+<p class="finding-deck"><span data-pt="O pico ocorreu às 10h; quase três quartos das solicitações foram registradas entre 08h e 17h59." data-en="The peak occurred at 10 a.m.; nearly three quarters of requests were logged between 8 a.m. and 5:59 p.m.">O pico ocorreu às 10h; quase três quartos das solicitações foram registradas entre 08h e 17h59.</span></p>
+<div class="result-layout">
+<div class="result-kpis">
+<article class="result-kpi"><h4><span data-pt="Pico por hora" data-en="Peak hour">Pico por hora</span></h4><strong>10h</strong><p><span data-pt="3.520 solicitações distintas no período" data-en="3,520 distinct requests during the period">3.520 solicitações distintas no período</span></p></article>
+<article class="result-kpi"><h4><span data-pt="Entre 08h e 17h59" data-en="Between 8 a.m. and 5:59 p.m.">Entre 08h e 17h59</span></h4><strong>73,6%</strong><p><span data-pt="29.026 solicitações registradas nessa janela" data-en="29,026 requests logged in this window">29.026 solicitações registradas nessa janela</span></p></article>
 </div>
+<figure><img src="assets/solicitacoes_por_hora.png" alt="Gráfico de solicitações distintas por hora do dia" loading="lazy" decoding="async">
+<figcaption data-lang="pt">Solicitações distintas por hora (0–23).</figcaption><figcaption data-lang="en">Distinct requests by hour (0–23).</figcaption></figure>
+</div></div>
+<div class="finding-section" id="finding-weekdays">
+<span class="finding-eyebrow">3.2 / WEEKDAY AVERAGES</span>
+<h3 class="finding-title"><span data-pt="Como a demanda varia ao longo da semana?" data-en="How does demand vary across weekdays?">Como a demanda varia ao longo da semana?</span></h3>
+<p class="finding-deck"><span data-pt="As médias consideram quantas vezes cada dia da semana aparece no período, evitando comparações distorcidas." data-en="Averages account for the number of observed occurrences of each weekday, avoiding misleading comparisons.">As médias consideram quantas vezes cada dia da semana aparece no período, evitando comparações distorcidas.</span></p>
+<div class="result-layout">
+<div class="result-kpis">
+<article class="result-kpi"><h4><span data-pt="Maior média diária" data-en="Highest daily average">Maior média diária</span></h4><strong><span data-pt="Quinta" data-en="Thursday">Quinta</span></strong><p><span data-pt="1.634,25 solicitações por quinta-feira observada" data-en="1,634.25 requests per observed Thursday">1.634,25 solicitações por quinta-feira observada</span></p></article>
+<article class="result-kpi"><h4><span data-pt="Menor média diária" data-en="Lowest daily average">Menor média diária</span></h4><strong><span data-pt="Domingo" data-en="Sunday">Domingo</span></strong><p><span data-pt="594,75 solicitações por domingo observado" data-en="594.75 requests per observed Sunday">594,75 solicitações por domingo observado</span></p></article>
+</div>
+<figure><img src="assets/media_por_dia_semana.png" alt="Gráfico de média de solicitações por dia da semana" loading="lazy" decoding="async">
+<figcaption data-lang="pt">Média diária normalizada pelos dias observados.</figcaption><figcaption data-lang="en">Daily average normalized by observed weekdays.</figcaption></figure>
+</div></div>
+<div class="finding-section" id="finding-heatmap">
+<span class="finding-eyebrow">3.3 / WEEKDAY × HOUR HEATMAP</span>
+<h3 class="finding-title"><span data-pt="Em quais combinações de dia e horário a demanda foi maior?" data-en="Which weekday–hour combinations had the highest demand?">Em quais combinações de dia e horário a demanda foi maior?</span></h3>
+<p class="finding-deck"><span data-pt="O mapa de calor cruza dia da semana e horário do registro, utilizando médias por dia observado." data-en="The heatmap combines weekday and registration time using averages per observed day.">O mapa de calor cruza dia da semana e horário do registro, utilizando médias por dia observado.</span></p>
+<div class="result-layout">
+<div class="result-kpis">
+<article class="result-kpi"><h4><span data-pt="Maior pico médio" data-en="Highest average peak">Maior pico médio</span></h4><strong>147,2</strong><p><span data-pt="Segunda-feira, às 10h" data-en="Monday at 10 a.m.">Segunda-feira, às 10h</span></p></article>
+<article class="result-kpi"><h4><span data-pt="Segundo maior pico" data-en="Second-highest peak">Segundo maior pico</span></h4><strong>146,25</strong><p><span data-pt="Quinta-feira, às 11h" data-en="Thursday at 11 a.m.">Quinta-feira, às 11h</span></p></article>
+</div>
+<figure><img src="assets/heatmap_dia_hora.png" alt="Heatmap: média de solicitações por dia da semana e horário" loading="lazy" decoding="async">
+<figcaption data-lang="pt">Média por dia e hora; células sem registros são mostradas como zero.</figcaption><figcaption data-lang="en">Average by weekday and hour; empty combinations are shown as zero.</figcaption></figure>
+</div></div>
+<div id="bats-findings">
+<div class="bat-kicker">3.4 / SPECIFIC FINDING · ZOONOSES</div>
+<h3 class="bat-headline" data-lang="pt">🦇 Descoberta específica: Distribuição de Morcegos na Cidade</h3>
+<h3 class="bat-headline" data-lang="en">🦇 Specific finding: Bat-related reports across Curitiba</h3>
+<p data-lang="pt">Filtrando <code>SUBDIVISAO = 'Morcegos'</code>, identificamos 97 registros, correspondentes a <strong>95 solicitações distintas</strong> em 47 bairros.</p>
+<p data-lang="en">Filtering <code>SUBDIVISAO = 'Morcegos'</code> yields 97 rows, corresponding to <strong>95 distinct requests</strong> across 47 neighborhoods.</p>
 <table class="study-table"><thead><tr><th data-pt="Bairro" data-en="Neighborhood">Bairro</th><th data-pt="Solicitações" data-en="Requests">Solicitações</th></tr></thead>
 <tbody><tr><td>Centro</td><td>14</td></tr><tr><td>Batel</td><td>9</td></tr><tr><td>Cajuru</td><td>6</td></tr><tr><td>Cristo Rei</td><td>5</td></tr></tbody></table>
 <div class="bat-times-block">
 <h4 data-lang="pt">Quando os chamados foram registrados?</h4>
 <h4 data-lang="en">When were the requests logged?</h4>
-<p class="bat-subtitle" data-lang="pt">Distribuição das 95 solicitações distintas por período do dia.</p>
-<p class="bat-subtitle" data-lang="en">Distribution of 95 distinct requests by time of day.</p>
+<p class="bat-subtitle" data-lang="pt">Distribuição das 95 solicitações distintas por período do dia. O horário identifica quando o chamado foi registrado, não necessariamente quando o animal foi visto.</p>
+<p class="bat-subtitle" data-lang="en">Distribution of 95 distinct requests by time of day. The recorded time may differ from when the bat was actually seen.</p>
 <div class="bat-period-list">
 <div class="bat-period"><span class="bat-period-label" data-lang="pt">Madrugada<br>00h–05h59</span><span class="bat-period-label" data-lang="en">Overnight<br>00:00–05:59</span><div class="bat-period-track" aria-hidden="true"><span class="bat-period-fill" style="width:3.2%"></span></div><span class="bat-period-value">3 · 3,2%</span></div>
 <div class="bat-period bat-period--primary"><span class="bat-period-label" data-lang="pt">Manhã<br>06h–11h59</span><span class="bat-period-label" data-lang="en">Morning<br>06:00–11:59</span><div class="bat-period-track" aria-hidden="true"><span class="bat-period-fill" style="width:41.1%"></span></div><span class="bat-period-value">39 · 41,1%</span></div>
@@ -270,19 +304,21 @@ ORDER BY dia_numero, hora_do_dia;</code></pre>
 <p class="bat-caption" data-lang="en">The relative frequency was approximately 3.6 times higher in Matriz. This measures the category's share of logged requests, not bat populations, resident exposure or disease risk.</p>
 </div>
 <div class="bat-public-health">
-<h4 data-lang="pt">Implicações para a saúde pública</h4>
-<h4 data-lang="en">Public-health implications</h4>
-<p data-lang="pt">Os dados identificam locais onde houve mais relatos ao 156. Como possível encaminhamento para avaliação pelas equipes municipais, esses registros podem ser cruzados com informações da vigilância e de períodos adicionais para orientar a cobertura de ações educativas e de monitoramento.</p>
-<p data-lang="en">The data identify where more requests were submitted through the 156 service. For municipal technical assessment, they could be compared with surveillance records and additional periods to examine the coverage of public guidance and monitoring activities.</p>
-<p data-lang="pt">A orientação oficial é evitar tocar ou tentar capturar morcegos em situações incomuns e solicitar atendimento especializado pelo 156 quando aplicável. Os registros analisados não permitem afirmar ocorrência de casos de raiva.</p>
-<p data-lang="en">Official guidance advises against touching or attempting to capture bats in unusual situations and directs residents to the 156 service for specialized assistance where appropriate. These records do not establish any confirmed rabies cases.</p>
+<h4 data-lang="pt">Saúde pública e convivência com a natureza</h4>
+<h4 data-lang="en">Public health and living alongside wildlife</h4>
+<p data-lang="pt">Morcegos fazem parte da natureza e têm um papel importante no equilíbrio ambiental. Encontrar um deles não significa, por si só, que exista um problema de saúde pública. A convivência responsável começa com informação e respeito: não devemos ferir, matar ou tentar capturar esses animais.</p>
+<p data-lang="en">Bats are part of nature and play an important ecological role. Encountering one does not, by itself, mean there is a public-health problem. Responsible coexistence begins with information and respect: bats should not be harmed, killed or captured by residents.</p>
+<p data-lang="pt">Ao encontrar um morcego em uma situação incomum, o mais seguro é evitar o contato, manter crianças e animais domésticos afastados e buscar orientação dos serviços especializados pelo 156. Se houver contato físico, é importante procurar prontamente orientação de um serviço de saúde.</p>
+<p data-lang="en">If a bat is found in unusual circumstances, the safest response is to avoid contact, keep children and pets away and seek specialist advice through the 156 service. In the event of physical contact, prompt advice from a health service is important.</p>
+<p data-lang="pt">Para a gestão municipal, esses relatos podem ajudar a avaliar onde ampliar orientações educativas, sempre em conjunto com dados de vigilância e de outros períodos. Nosso estudo não mede a população de morcegos nem comprova casos de raiva.</p>
+<p data-lang="en">For municipal teams, these reports may help assess where public guidance could be strengthened, alongside surveillance data and longer time periods. This study does not measure bat populations or establish confirmed rabies cases.</p>
 </div>
 <div class="bat-resources">
 <a href="sql/07_morcegos_geografia_horarios.sql" data-pt="Consultar código SQL ↗" data-en="View SQL queries ↗">Consultar código SQL ↗</a>
 <a href="https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603" target="_blank" rel="noopener noreferrer" data-pt="Orientações oficiais da Vigilância de Zoonoses ↗" data-en="Official zoonosis surveillance guidance ↗">Orientações oficiais da Vigilância de Zoonoses ↗</a>
 </div>
 </div><div class="note" data-lang="pt"><strong>Limitações:</strong> o período observado é 01/04–01/05/2024. Trata-se de registros de solicitações, não de medições da fauna, casos de raiva ou indicadores de desempenho. Os padrões são descritivos e não demonstram causalidade.</div><div class="note" data-lang="en"><strong>Limitations:</strong> the observation window is Apr 1–May 1, 2024. Requests are not wildlife counts, confirmed rabies cases or service-performance measures. Findings are descriptive and do not establish causality.</div><div class="panel"><h3 data-lang="pt">Próximos passos</h3><h3 data-lang="en">Next steps</h3><p data-lang="pt">Aprofundar os rankings de assuntos, a análise por bairros e regionais, os órgãos responsáveis e a validação da codificação dos textos. Manter as consultas SQL reproduzíveis e documentadas.</p><p data-lang="en">Expand topic rankings, neighborhood and district comparisons, responsible-agency analysis and text-encoding validation, with reproducible and documented SQL queries.</p></div></section>
-</main><footer><div class="wrap"><div data-lang="pt">Projeto 03 · Alô, Cidade! · Versão parcial 0.1 · <a href="README.md">README completo</a></div><div data-lang="en">Project 03 · Hello, City! · Preliminary release 0.1 · <a href="README.en.md">Full README</a></div></div></footer>
+</main><footer><div class="wrap"><div data-lang="pt">Projeto 03 · Alô, Cidade! · Versão parcial 0.2 · <a href="README.md">README completo</a></div><div data-lang="en">Project 03 · Hello, City! · Preliminary release 0.2 · <a href="README.en.md">Full README</a></div></div></footer>
 <script>
 (function(){
   function refreshTitle(){
