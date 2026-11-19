@@ -1,7 +1,7 @@
 # Hello, City! — What the City's 156 Service Requests Reveal
 
 **Project 03 · SQL / MySQL · Data Quality · Exploratory Data Analysis**  
-**Version 0.1 — preliminary findings | Work in progress** · [Português](README.md)
+**Version 0.2 — preliminary findings | Work in progress** · [Português](README.md)
 
 > **Main question:** What do Curitiba's 156 municipal service records reveal about service demand patterns, and what data-quality precautions are needed to analyze them reliably?
 
@@ -9,7 +9,7 @@
 |---:|---:|---:|---|
 | **41,490** | **39,451** | **21** | **Apr 1–May 1, 2024** |
 
-**Navigation:** [The Problem](#1-the-problem) · [The Approach](#2-the-approach) · [The Results](#3-the-results) · [Project webpage](index.html)
+**Navigation:** [Visual index](index.html#indice) · [1. The Problem](#1-the-problem) · [2. The Approach](#2-the-approach) · [2.1 Checklist](index.html#data-checklist) · [2.2 SQL code](index.html#sql-examples) · [3. Results](#3-the-results) · [3.4 Bat case study](index.html#bats-findings)
 
 ---
 
@@ -17,7 +17,7 @@
 
 Curitiba's 156 municipal service channel logs requests, complaints, reports and other citizen inquiries. Studying these records may help identify **when** people submit requests and, in future stages, **which topics** and **locations** dominate. But the unit of analysis must first be understood: one request ID can appear in multiple rows.
 
-This first release covers structural and quality checks, record granularity, and temporal patterns. Analyses by topic, municipal department and geographic area remain under development.
+This first release covers structural and quality checks, record granularity, and temporal patterns. Further analyses by topic, municipal department and geography are planned; the specific bat-related case study is already presented in the findings.
 
 **Data source:** https://156.curitiba.pr.gov.br/Estatistica/Saiba-sobre-os-dados-de-atendimento-da-central-156
 
@@ -25,7 +25,7 @@ This first release covers structural and quality checks, record granularity, and
 
 ## 2. The Approach
 
-### Data intake and quality checklist — before the first analysis
+### 2.1 Data intake and quality checklist — before the first analysis
 
 Before calculating metrics, the dataset is profiled and audited. The status below refers **only to checks documented for this project**:
 
@@ -51,7 +51,7 @@ WHERE TABLE_SCHEMA = 'modulosql'
 ORDER BY ORDINAL_POSITION;
 ```
 
-[Full initial profiling SQL](sql/00_checklist_recebimento.sql) · [Visual checklist on the project page](index.html#data-checklist)
+[Full initial profiling SQL](sql/00_checklist_recebimento.sql) · [Two-column visual checklist with review status](index.html#data-checklist)
 
 ### Tools used
 
@@ -83,7 +83,11 @@ ORDER BY ORDINAL_POSITION;
 
 Among the 2,030 repeated request IDs, there were **no differences** in `TIPO`, `ASSUNTO`, `SUBDIVISAO`, `DATA`, `HORARIO`, `BAIRRO_ASS`, or `REGIONAL_ASS`.
 
-### SQL example — count requests, not repeated records
+The audit also identified **372 fully redundant extra rows (excluding `id`)**, while **40.67% of rows have an empty `ORGAO` field**. These findings explain why raw row counts and distinct request counts should be reported separately.
+
+### 2.2 Applied SQL examples
+
+#### Example — count requests, not repeated records
 
 ```sql
 SELECT
@@ -92,7 +96,7 @@ SELECT
 FROM modulosql.chamados156;
 ```
 
-### SQL example — audit repeated request IDs with window functions
+#### Example — audit repeated request IDs with window functions
 
 A `ROW_NUMBER()` window lets us separate additional rows from distinct request IDs without assuming every repeated row is an exact duplicate:
 
@@ -113,7 +117,7 @@ FROM protocolos;
 
 There are **2,030 repeated request IDs but 2,039 additional rows**, because 2,023 IDs occur twice, five three times, and two four times. Additional rows may contain different replies. [See complete window-function audit](sql/06_window_functions_auditoria.sql).
 
-### SQL example — hourly distribution
+#### Example — hourly distribution
 
 ```sql
 SELECT
@@ -134,29 +138,25 @@ The heatmap query uses **CTEs, JOIN and date/time functions** to divide hourly r
 
 ## 3. The Results
 
-### Finding 01 — Requests peak during business hours
+### 3.1 Requests peak during business hours
 
 ![Distinct requests by hour](assets/solicitacoes_por_hora.png)
 
 **10 a.m.** was the busiest hour with **3,520 distinct requests**. The 9–11:59 a.m. period accounted for **9,942 (25.2%)** requests, while 8 a.m.–5:59 p.m. accounted for **29,026 (73.6%)**.
 
-### Finding 02 — Request volume varies by weekday
+### 3.2 Request volume varies by weekday
 
 ![Average daily requests by weekday](assets/media_por_dia_semana.png)
 
 Thursday had the largest average (**1,634.25 requests per observed Thursday**); Sunday the smallest (**594.75**). Average daily weekday volume was approximately **2.09 times** weekend volume.
 
-### Finding 03 — Weekday × hour heatmap
+### 3.3 Weekday × hour heatmap
 
 ![Heatmap of average requests by weekday and hour](assets/heatmap_dia_hora.png)
 
 The highest hourly weekday average occurred on **Monday at 10 a.m. (147.2)**, followed closely by **Thursday at 11 a.m. (146.25)**. Heatmap values are normalized by the number of observed days.
 
-### Finding 04 — Data quality affects analytical counts
-
-**2,030** request IDs occur in more than one record, **372** excess rows are fully redundant apart from `id`, and **40.67%** of records lack `ORGAO`. The project explicitly differentiates request IDs from raw rows.
-
-### Finding 05 — Bat-related service requests: geography and time of reporting
+### 3.4 🦇 Specific finding: Bat-related requests across Curitiba
 
 Filtering `SUBDIVISAO = 'Morcegos'` found **97 records representing 95 distinct request IDs**, distributed over **47 neighborhoods**. Of those, **46 (48.4%)** were in **Matriz**, compared with Matriz's **20.9%** share of all 156 requests. This describes a concentration of reports, not a measured concentration of bats or confirmed illnesses.
 
@@ -183,11 +183,13 @@ The busiest individual hour was **9 a.m. (11 requests)**. The recorded time refe
 
 The Matriz district recorded approximately **5.59 bat-related requests per 1,000 requests to the 156 service**, versus **1.57 per 1,000 in all other districts combined** — roughly **3.6 times the relative frequency**. This denominator is the number of 156 requests, **not the resident population**. It cannot measure bat abundance, human exposure or disease incidence.
 
-#### Public-health implications
+#### Public health and living alongside wildlife
 
-These data identify where more requests were registered; they do not establish any confirmed rabies cases. One **option for technical assessment** is to compare these reports with surveillance information and additional periods to examine the reach of public guidance and follow-up monitoring.
+Bats are part of nature and contribute to ecological balance. A sighting is not, in itself, evidence of disease. A responsible response combines wildlife protection with public safety: do not harm, kill or try to capture bats; avoid contact and keep children and pets at a safe distance in unusual situations.
 
-Curitiba's [Zoonosis Surveillance Unit](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) advises residents not to handle bats found in unusual circumstances and to request specialized assistance via the 156 service where appropriate.
+Residents can seek specialist guidance through the 156 service when appropriate, as indicated by Curitiba's [Zoonosis Surveillance Unit](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603). After physical contact, prompt advice from a healthcare service is important.
+
+These records may help municipal teams assess where preventive guidance could be strengthened, but they do not establish rabies cases or measure bat populations.
 
 **[View the bat-analysis SQL queries](sql/07_morcegos_geografia_horarios.sql).** The aggregations were checked in a local SQL database using the exported CSV; the MySQL 8-compatible scripts have not been rerun against the original server.
 
