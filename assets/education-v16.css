@@ -19,3 +19,18 @@
 #jf-education-v16 .edu-v16-logo{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 #jf-education-v16 .edu-v16-logo-harve{padding:0}
 @media(max-width:420px){#jf-education-v16 .edu-v16-item{grid-template-columns:50px minmax(0,1fr);gap:10px}#jf-education-v16 .edu-v16-logo-shell{width:48px;height:48px;padding:4px;border-radius:10px}}
+
+/* Focus Uppsala's small logo tile on the original seal; its name is in the adjacent text. */
+#jf-education-v16 .edu-v16-logo-shell:has(.edu-v16-logo-uppsala) {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+#jf-education-v16 .edu-v16-logo-uppsala {
+  position: absolute;
+  width: 185%;
+  max-width: none;
+  height: auto;
+  left: -42.5%;
+  top: -3%;
+}
