@@ -136,3 +136,11 @@ footer a{color:#1b6981}
  .bat-ratio-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.toc-entry{transition:none}}
+
+
+/* Keep the checklist container bright and prevent hidden translations from resurfacing.
+   Some legacy selectors (.metric small, .discovery-card small) have higher specificity
+   than the original [data-lang] rule, which displayed both languages simultaneously. */
+.data-checklist{margin:30px 0;background:transparent;border:0;border-radius:0;padding:0;color:#20354c}
+.data-checklist .study-subtitle{margin-top:0}
+html[lang="pt-BR"] [data-lang="en"],html[lang="en"] [data-lang="pt"]{display:none!important}
