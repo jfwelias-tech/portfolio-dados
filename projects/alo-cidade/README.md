@@ -1,7 +1,7 @@
 # Alô, Cidade! — O que os Chamados 156 Revelam
 
 **Projeto 03 · SQL / MySQL · Qualidade de dados · Análise exploratória**  
-**Versão 0.1 — resultados parciais | Em desenvolvimento** · [English version](README.en.md)
+**Versão 0.2 — resultados parciais | Em desenvolvimento** · [English version](README.en.md)
 
 > **Pergunta central:** o que os registros da Central 156 de Curitiba revelam sobre os padrões de demanda municipal, e quais cuidados com a qualidade dos dados são necessários para uma análise confiável?
 
@@ -9,7 +9,7 @@
 |---:|---:|---:|---|
 | **41.490** | **39.451** | **21** | **01/04/2024 a 01/05/2024** |
 
-**Navegação:** [O problema](#1-o-problema--the-problem) · [A solução e o processo](#2-a-solução-e-o-processo--the-approach) · [Resultados e visualização](#3-resultados-e-visualização--the-results) · [Página de apresentação](index.html)
+**Navegação:** [Índice visual](index.html#indice) · [1. O problema](#1-o-problema--the-problem) · [2. O processo](#2-a-solução-e-o-processo--the-approach) · [2.1 Checklist](index.html#data-checklist) · [2.2 SQL avançado](index.html#sql-examples) · [3. Resultados](#3-resultados-e-visualização--the-results) · [3.4 Morcegos](index.html#bats-findings)
 
 ---
 
@@ -19,7 +19,7 @@ A Central 156 de Curitiba recebe e registra diferentes demandas relacionadas a s
 
 Antes de construir indicadores, é necessário identificar a unidade de análise: **cada linha representa um registro**, mas uma solicitação pode aparecer em múltiplas linhas. Comparar volume de registros com volume de solicitações sem essa distinção pode distorcer conclusões.
 
-**Objetivos desta etapa:** validar estrutura e qualidade dos dados, definir a contagem por solicitação e investigar a distribuição temporal dos atendimentos. As análises por assunto, órgão e território serão acrescentadas nas próximas versões.
+**Objetivos desta etapa:** validar estrutura e qualidade dos dados, definir a contagem por solicitação e investigar a distribuição temporal dos atendimentos. As análises por assunto, órgão e território serão aprofundadas nas próximas versões; a investigação específica sobre morcegos já integra os resultados.
 
 **Fonte dos dados:** https://156.curitiba.pr.gov.br/Estatistica/Saiba-sobre-os-dados-de-atendimento-da-central-156
 
@@ -27,7 +27,7 @@ Antes de construir indicadores, é necessário identificar a unidade de análise
 
 ## 2. A solução e o processo | THE APPROACH
 
-### Checklist de boas práticas — antes da primeira análise
+### 2.1 Checklist de boas práticas — antes da primeira análise
 
 Uma etapa explícita de **recebimento e auditoria** evita transformar problemas da base em indicadores incorretos. Este checklist é reutilizável, mas seu status mostra **somente o que foi verificado neste projeto**:
 
@@ -53,7 +53,7 @@ WHERE TABLE_SCHEMA = 'modulosql'
 ORDER BY ORDINAL_POSITION;
 ```
 
-[Script completo do diagnóstico inicial](sql/00_checklist_recebimento.sql) · [Checklist visual na página](index.html#data-checklist)
+[Script completo do diagnóstico inicial](sql/00_checklist_recebimento.sql) · [Checklist visual em duas colunas, com status por etapa](index.html#data-checklist)
 
 ### Ferramentas utilizadas
 
@@ -85,7 +85,11 @@ ORDER BY ORDINAL_POSITION;
 
 A consistência de `TIPO`, `ASSUNTO`, `SUBDIVISAO`, `DATA`, `HORARIO`, `BAIRRO_ASS` e `REGIONAL_ASS` também foi testada nas 2.030 solicitações repetidas: **nenhuma divergência** foi encontrada nesses campos.
 
-### Exemplo 1 — Contar solicitações sem superestimar a demanda
+A auditoria identificou ainda **372 linhas integralmente redundantes (exceto `id`)** e **40,67% das linhas com `ORGAO` vazio**. Essas evidências reforçam a necessidade de diferenciar registros brutos de protocolos distintos.
+
+### 2.2 Exemplos de SQL aplicados
+
+#### Exemplo 1 — Contar solicitações sem superestimar a demanda
 
 ```sql
 SELECT
@@ -96,7 +100,7 @@ FROM modulosql.chamados156;
 
 **Resultado:** 41.490 registros e 39.451 solicitações distintas. A contagem por protocolo é a unidade usada nas análises temporais abaixo.
 
-### Exemplo 2 — Auditar protocolos repetidos com função de janela
+#### Exemplo 2 — Auditar protocolos repetidos com função de janela
 
 O uso de `ROW_NUMBER() OVER (PARTITION BY SOLICITACAO ORDER BY id)` identifica linhas adicionais sem presumir que são cópias integrais:
 
@@ -121,7 +125,7 @@ FROM protocolos;
 
 **Conciliação:** 2.023 protocolos com duas linhas, cinco com três e dois com quatro produzem **2.030 protocolos repetidos**, mas **2.039 linhas adicionais** (`2023 + 5×2 + 2×3`). Nem toda linha adicional é redundante. [Script SQL](sql/06_window_functions_auditoria.sql).
 
-### Exemplo 3 — Preparar horários e analisar a demanda
+#### Exemplo 3 — Preparar horários e analisar a demanda
 
 ```sql
 SELECT
@@ -134,7 +138,7 @@ ORDER BY hora_do_dia;
 
 **Decisão técnica:** `HORARIO` é armazenado como texto, com espaços adicionais; o `TRIM` evita resultados incorretos na conversão. A função `COUNT(DISTINCT ...)` impede contar uma solicitação repetida como demanda adicional.
 
-### Exemplo 4 — CTEs, JOIN e normalização por dia observado
+#### Exemplo 4 — CTEs, JOIN e normalização por dia observado
 
 A consulta que produziu o mapa de calor usa duas CTEs e divide a quantidade de solicitações por hora pela quantidade de ocorrências daquele dia da semana. Isso evita comparar diretamente quatro quintas-feiras com cinco segundas-feiras.
 
@@ -148,13 +152,13 @@ A consulta que produziu o mapa de calor usa duas CTEs e divide a quantidade de s
 
 ## 3. Resultados e visualização | THE RESULTS
 
-### Descoberta 01 — A demanda se concentra no horário comercial
+### 3.1 A demanda se concentra no horário comercial
 
 ![Volume de solicitações distintas por hora do dia](assets/solicitacoes_por_hora.png)
 
 A **hora de maior volume foi 10h**, com **3.520 solicitações** no período. Entre **09h e 11h59**, foram registradas **9.942 solicitações (25,2%)**; entre **08h e 17h59**, **29.026 (73,6%)**.
 
-### Descoberta 02 — Há diferenças entre os dias da semana
+### 3.2 Há diferenças entre os dias da semana
 
 ![Média de solicitações por dia da semana](assets/media_por_dia_semana.png)
 
@@ -170,17 +174,13 @@ A **hora de maior volume foi 10h**, com **3.520 solicitações** no período. En
 
 A maior média diária ocorreu **às quintas-feiras (1.634,25)** e a menor **aos domingos (594,75)**. Considerando a frequência de dias úteis e fins de semana na amostra, a média diária dos dias úteis foi aproximadamente **2,09 vezes** a dos fins de semana.
 
-### Descoberta 03 — O mapa de calor revela janelas de maior concentração
+### 3.3 O mapa de calor revela janelas de maior concentração
 
 ![Heatmap de média de solicitações por dia da semana e hora do dia](assets/heatmap_dia_hora.png)
 
 O maior pico médio foi **segunda-feira, às 10h (147,2 solicitações por segunda-feira observada)**. A **quinta-feira às 11h (146,25)** apresentou valor muito próximo. O mapa utiliza a média por dia observado, e não os totais brutos.
 
-### Descoberta 04 — Qualidade dos dados influencia os indicadores
-
-A auditoria identificou **2.030 solicitações com múltiplos registros**, **372 registros integralmente redundantes (exceto `id`)** e **40,67% das linhas com `ORGAO` não preenchido**. Esses achados motivaram a decisão de separar **registros** de **solicitações distintas**, sem presumir que toda repetição fosse um erro.
-
-### Descoberta 05 — Morcegos: onde e em quais horários os chamados foram registrados?
+### 3.4 🦇 Descoberta específica: Distribuição de Morcegos na Cidade
 
 A consulta `SUBDIVISAO = 'Morcegos'` encontrou **97 registros e 95 solicitações distintas**, em **47 bairros**. Destas, **46 (48,4%)** pertencem à **Regional Matriz**, contra uma participação da Matriz de **20,9%** no total de protocolos da Central 156. Esse contraste indica concentração relativa dos registros, não maior presença comprovada de animais ou doenças.
 
@@ -207,11 +207,13 @@ O maior volume em uma hora foi registrado às **09h (11 solicitações)**. `HORA
 
 Na Regional Matriz, houve aproximadamente **5,59 solicitações sobre morcegos por mil protocolos do 156**, contra **1,57 por mil nas demais regionais juntas** — uma frequência relativa cerca de **3,6 vezes maior**. A comparação utiliza o total de solicitações do serviço 156 como denominador, **não a população residente**; portanto não mede a quantidade de morcegos, a exposição de moradores ou a incidência de doenças.
 
-#### Implicações para a saúde pública
+#### Saúde pública e convivência com a natureza
 
-Os dados identificam áreas com mais solicitações registradas, mas não demonstram ocorrência de casos de raiva. Como **possível encaminhamento para avaliação técnica**, esses registros podem ser cruzados com informações de vigilância e de outros períodos para examinar a cobertura de orientações preventivas e o monitoramento dos relatos.
+Morcegos fazem parte da natureza e contribuem para o equilíbrio ambiental. Um avistamento não é, por si só, evidência de doença. A resposta mais responsável combina respeito à fauna e cuidado com as pessoas: não ferir, matar nem tentar capturar esses animais, evitar contato e manter crianças e animais domésticos afastados em situações incomuns.
 
-A [Unidade de Vigilância de Zoonoses de Curitiba](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603) orienta evitar manusear morcegos encontrados em situações incomuns e solicitar atendimento especializado pelo 156, quando aplicável.
+Quando necessário, moradores podem solicitar orientação especializada pelo 156, conforme as recomendações da [Unidade de Vigilância de Zoonoses de Curitiba](https://saude.curitiba.pr.gov.br/conteudo/zoonoses-e-vetores/1603). Em caso de contato físico, deve-se procurar prontamente orientação de um serviço de saúde.
+
+Os registros podem ajudar equipes municipais a avaliar onde reforçar a comunicação preventiva, mas não comprovam casos de raiva nem representam uma medida da população de morcegos.
 
 **[Consultar as consultas SQL sobre morcegos](sql/07_morcegos_geografia_horarios.sql).** As agregações foram conferidas na cópia CSV carregada em SQL local; os arquivos compatíveis com MySQL 8 ainda não foram reexecutados no servidor original.
 
