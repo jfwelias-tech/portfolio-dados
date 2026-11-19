@@ -153,3 +153,22 @@
   .about-v14-description { font-size: 16px; }
   .about-v14-card { gap: 22px; }
 }
+
+/* Keep the personal card with the profile highlights in the left column. */
+.about-v15-side { display: grid; gap: 20px; align-content: start; }
+.about-v15-side .about-v14-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 16px;
+}
+.about-v15-side .about-v14-photo { border-radius: 12px; }
+.about-v15-side .about-v14-eyebrow { font-size: 9px; letter-spacing: .08em; }
+.about-section .about-v15-side .about-v14-card h3 { font-size: 27px; }
+.about-v15-side .about-v14-description { font-size: 14px; line-height: 1.75; }
+.about-v15-side .about-v14-tags { margin-top: 20px; }
+.about-v15-side .about-v14-tag { min-height: 44px; padding: 10px 12px; gap: 10px; }
+.about-v15-side .about-v14-tag span { font-size: 13px; }
+.about-v15-side .about-v14-tag svg { width: 21px; height: 21px; }
