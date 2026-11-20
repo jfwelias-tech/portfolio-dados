@@ -11,7 +11,7 @@
     document.documentElement.lang=lang==='pt'?'pt-BR':'en';
     document.querySelectorAll('[data-pt][data-en]').forEach(el=>{el.innerHTML=el.getAttribute('data-'+lang);});
     document.querySelectorAll('[data-set-language]').forEach(b=>{const chosen=b.dataset.setLanguage===lang;b.classList.toggle('is-current',chosen);b.setAttribute('aria-pressed',String(chosen));});
-    document.title=lang==='pt'?'João Felipe | Análise de Dados & BI':'João Felipe | Data Analytics & BI';
+    document.title=document.body.classList.contains('case-page') ? (lang==='pt'?'Projeto 01 | Copa do Mundo 2026 — Power BI + DAX | João Felipe':'Project 01 | World Cup 2026 — Power BI + DAX | João Felipe') : (lang==='pt'?'João Felipe | Análise de Dados & BI':'João Felipe | Data Analytics & BI');
     updateFilters(active);
   }
   function updateFilters(skill){
