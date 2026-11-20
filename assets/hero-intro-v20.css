@@ -1,0 +1,23 @@
+/* Approved introduction and featured SQL project. Scoped to the homepage hero. */
+.hero-intro-v20 .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,4vw,64px)}
+.hero-intro-v20 h1{font-size:clamp(2.7rem,4.1vw,3.7rem);line-height:1.12;letter-spacing:-.055em;max-width:none}
+.hero-intro-v20 h1 em{display:block}
+.hero-intro-v20 .hero-copy>p{font-size:1.0625rem;line-height:1.75;color:#c5d4db;max-width:none}
+.hero-intro-v20 .hero-foot{margin-top:40px}
+.hero-intro-v20 .hero-copy{min-width:0}
+.hero-intro-v20 .hero-city{position:relative;isolation:isolate;padding:28px;min-height:490px;display:flex;flex-direction:column;background:linear-gradient(135deg,#213d49,#142d3a)}
+.hero-city .display-top{font-size:.8rem;color:#c1eee3;position:relative;z-index:1}
+.hero-city-map{position:absolute;inset:0 0 0 auto;width:100%;height:100%;object-fit:cover;opacity:.65;z-index:-2;pointer-events:none}
+.hero-city:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#1c3643 3%,rgba(28,54,67,.92) 35%,rgba(20,45,58,.12) 100%);pointer-events:none}
+.hero-city-content{padding:62px 0 44px;flex:1}
+.hero-city .display-eyebrow{display:block;font-size:.875rem;letter-spacing:.13em;margin:0 0 16px}
+.hero-city h2{font-size:clamp(2.5rem,4.2vw,3.8rem);letter-spacing:-.065em;line-height:1.1;margin:0 0 24px;color:#fff}
+.hero-city h2 span{color:#99dec8}
+.hero-city-question{font-size:clamp(1.25rem,1.8vw,1.5rem);font-weight:750;line-height:1.35;max-width:370px;margin:0 0 22px;color:#f4fafb}
+.hero-city-description{font-size:1.0625rem;line-height:1.6;color:#bfd2db;max-width:320px;margin:0}
+.hero-city-link{display:flex;justify-content:space-between;align-items:center;gap:16px;border-top:1px solid #49626b;padding-top:21px;font-size:1.0625rem;font-weight:750;color:#a7ead7}
+.hero-city-link>span:last-child{font-size:1.5rem}
+.hero-city-link:hover{color:#fff}
+.hero-city-link:focus-visible{outline-color:#b4e5d4}
+@media(max-width:900px){.hero-intro-v20 .hero-grid{grid-template-columns:1fr;gap:36px}.hero-intro-v20 h1{font-size:clamp(2.4rem,6vw,3.7rem);max-width:680px}.hero-intro-v20 .hero-city{min-height:0}.hero-city-content{padding:44px 0}.hero-city-description{max-width:390px}.hero-city h2{font-size:clamp(2.5rem,7vw,3.8rem)}}
+@media(max-width:430px){.hero-intro-v20{padding:46px 0}.hero-intro-v20 h1{font-size:clamp(2rem,9vw,2.6rem)}.hero-intro-v20 .hero-city{padding:22px}.hero-city .display-top{font-size:.75rem}.hero-city-content{padding:36px 0}.hero-city-question{font-size:1.25rem}.hero-intro-v20 .hero-copy>p,.hero-city-description{font-size:1rem}.hero-city-map{opacity:.35}}
