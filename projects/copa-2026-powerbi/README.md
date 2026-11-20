@@ -10,6 +10,7 @@ Como comparar o desempenho das seleções e resumir 104 partidas em indicadores 
 - Tabela auxiliar Partidas por Seleção: 104 partidas × duas seleções = 208 registros.
 - Medidas DAX existentes em [DAX.md](DAX.md).
 - Checklist de boas práticas e pendências técnicas incluído na página.
+- [Guia de redesign e publicação do Power BI Desktop](POWERBI_REDESIGN.md) (planejado, ainda não aplicado no PBIX).
 
 ## 3. Resultados e visualização
 - [Estudo de caso bilíngue com índice, resultados e gráficos para navegador](https://jfwelias-tech.github.io/portfolio-dados/projects/copa-2026-powerbi/)
