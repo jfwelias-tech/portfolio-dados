@@ -1,45 +1,29 @@
-# Copa do Mundo 2026 — Power BI & DAX
+# Projeto 01 | Copa do Mundo 2026 — Power BI + DAX + Data Visualization
 
-**Status:** 🚧 estudo de caso em desenvolvimento / Work in progress.
+## 1. O problema
+Como comparar o desempenho das seleções e resumir 104 partidas em indicadores confiáveis, considerando a granularidade, a qualidade dos dados e o comportamento dos filtros?
 
-**Stack / Skills:** Power BI · DAX · Power Query · Análise de Dados.
+**Público:** analistas esportivos e leitores interessados em explorar resultados.
 
-## Objetivo
+## 2. A solução e o processo
+- Preparação de tipos e localidade no Power Query; erro real de importação de 2.0 como 20 documentado.
+- Tabela auxiliar Partidas por Seleção: 104 partidas × duas seleções = 208 registros.
+- Medidas DAX existentes em [DAX.md](DAX.md).
+- Checklist de boas práticas e pendências técnicas incluído na página.
 
-Explorar as partidas da Copa do Mundo 2026 e demonstrar o processo de construção e revisão de um dashboard: modelagem de dados, medidas DAX, qualidade de dados, indicadores, experiência de navegação e documentação.
+## 3. Resultados e visualização
+- [Estudo de caso bilíngue com índice, resultados e gráficos para navegador](https://jfwelias-tech.github.io/portfolio-dados/projects/copa-2026-powerbi/)
+- [Capturas reais do Power BI](screenshots/) disponíveis sem instalar o Desktop.
+- Média de gols: 2022 172/64 = 2,69; 2026 308/104 = 2,96; diferença aproximada de 0,27 gol por partida. O formato das edições é diferente.
 
-## Entregas da primeira publicação
+### Fontes para conferência
+- [FIFA — World Cup 2026 by the numbers](https://inside.fifa.com/tournament-organisation/fifa-world-cup-2026-by-the-numbers)
+- [FIFA — Gols da Copa 2026](https://www.fifa.com/pt/tournaments/mens/worldcup/canadamexicousa2026/articles/gols-copa-melhor-media-artilheiros-ligas-clubes)
+- [FIFA — Formato 2026](https://www.fifa.com/en/articles/article-fifa-world-cup-2026-mexico-canada-usa-new-format-tournament-football-soccer?pubDate=20250524)
 
-- Página de estudo de caso: [`index.html`](index.html).
-- Capturas do relatório em [`screenshots/`](screenshots/) (versão de trabalho).
-- Exemplos das medidas e da modelagem: [`DAX.md`](DAX.md).
-- Checklist de revisão e limitações: [`REVIEW.md`](REVIEW.md).
+**Limite de procedência:** essas fontes conferem indicadores públicos, mas o provedor original, a licença e a data de coleta dos CSVs que alimentam o PBIX ainda não foram documentados.
 
-O arquivo `.pbix` não está incluído nesta primeira publicação porque ainda está em revisão de fontes, tipos, filtros, apresentação e caminhos locais de atualização. Quando validado e preparado para ser reutilizado, será incorporado como artefato do projeto.
-
-## Indicadores de referência
-
-| Indicador | Valor |
-|---|---:|
-| Seleções | 48 |
-| Partidas | 104 |
-| Gols | 308 |
-| Média de gols por partida | 2,96 |
-
-Verificação externa: [FIFA — gols da Copa 2026](https://www.fifa.com/pt/tournaments/mens/worldcup/canadamexicousa2026/articles/gols-copa-melhor-media-artilheiros-ligas-clubes). Os totais não substituem uma auditoria linha a linha dos dados brutos.
-
-## Aprendizado central
-
-Durante a atualização do CSV, valores como `2.0` foram interpretados incorretamente como `20` devido à configuração regional. A inconsistência apareceu nos indicadores e no ranking. A correção envolveu revisar a conversão no Power Query, os tipos das colunas e os totais. Esse problema real é parte do histórico de qualidade do projeto.
-
-## Data model
-
-`teams` (dimensão; chave `team_id`) → `scorers` (muitos) e `Partidas por Seleção` (muitos). A tabela `matches` fornece os totais do torneio e, nesta fase, não está diretamente conectada à dimensão de seleções. A tabela auxiliar possui duas linhas por partida: equipe mandante e visitante.
-
-## Próximas etapas
-
-Consultar [`REVIEW.md`](REVIEW.md) antes de declarar o dashboard finalizado.
+**Próximos passos:** validar filtro e integridade do modelo, gols contra, empates e fase; modernizar o relatório nativo; publicar PDF, vídeo ou link compartilhável. O arquivo PBIX ainda não está disponível publicamente. Os gráficos web não são capturas do Power BI.
 
 ---
-
-**EN:** An evolving Power BI case study focused on data correctness, dimensional modeling, DAX KPIs and report usability. The site is bilingual; this repository documents the work transparently instead of portraying a draft report as a final deliverable.
+**EN:** Project 01 — bilingual recruiter-facing Power BI + DAX case study organized as problem, approach and results, with web visualizations, real report screenshots and transparent QA backlog.
