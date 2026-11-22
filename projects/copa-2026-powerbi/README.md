@@ -22,7 +22,15 @@ Como comparar o desempenho das seleções e resumir 104 partidas em indicadores 
 - [FIFA — Gols da Copa 2026](https://www.fifa.com/pt/tournaments/mens/worldcup/canadamexicousa2026/articles/gols-copa-melhor-media-artilheiros-ligas-clubes)
 - [FIFA — Formato 2026](https://www.fifa.com/en/articles/article-fifa-world-cup-2026-mexico-canada-usa-new-format-tournament-football-soccer?pubDate=20250524)
 
-**Limite de procedência:** essas fontes conferem indicadores públicos, mas o provedor original, a licença e a data de coleta dos CSVs que alimentam o PBIX ainda não foram documentados.
+### Procedência dos dados e uso de IA
+
+**Origem imediata conhecida:** o conjunto de dados foi recebido de um professor. A **fonte primária**, as condições de uso/licença e a data original de coleta **não estão confirmadas**.
+
+Durante o desenvolvimento, **parte do conjunto foi complementada com auxílio do ChatGPT**. Ainda não existe uma relação auditada dos registros afetados nem uma referência verificável para cada complemento. Não devemos classificar automaticamente esses registros como oficiais ou reproduzidos de fonte primária.
+
+As referências da FIFA acima **permitem conferir totais agregados**, mas **não certificam a exatidão de cada linha**, a origem dos CSVs ou a validade das intervenções feitas com IA. Até concluirmos a rastreabilidade e auditoria, o conjunto será apresentado como **material de estudo com procedência parcialmente documentada**.
+
+**Plano de validação:** preservar o arquivo originalmente recebido, compará-lo com a versão usada no PBIX, identificar linhas e campos incluídos ou alterados e verificar cada alteração contra fontes rastreáveis. Registrar as decisões em um log de transformações.
 
 **Próximos passos:** validar filtro e integridade do modelo, gols contra, empates e fase; modernizar o relatório nativo; publicar PDF, vídeo ou link compartilhável. O arquivo PBIX ainda não está disponível publicamente. Os gráficos web não são capturas do Power BI.
 

@@ -33,7 +33,7 @@ Este é um **plano de implementação para o Power BI Desktop**. O PBIX original
 
 - [x] Narrativa e direção visual definidas para apresentação web.
 - [x] Código DAX básico documentado no arquivo [DAX.md](DAX.md).
-- [ ] Validar fontes, licença dos CSVs e caminhos locais.
+- [ ] Rastrear fonte primária e licença dos CSVs recebidos do professor, identificar os dados complementados com ChatGPT e validá-los; conferir caminhos locais.
 - [ ] Validar medidas ao filtrar uma seleção e o torneio todo.
 - [ ] Validar gols contra, empates no Top N e data/fase.
 - [ ] Redesenhar o PBIX com 16:9, alinhamentos e contraste.

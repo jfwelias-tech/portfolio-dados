@@ -14,7 +14,7 @@
 
 | Priority | Risk | Evidence / Acceptance criterion |
 |---|---|---|
-| P0 | No documented source lineage for every CSV | Add original providers, extraction date, license/usage rights, transformation steps and a reproducible refresh plan. |
+| P0 | Original dataset source unknown; AI-assisted completion not traceable | Dataset was received from an instructor; compare original and final CSVs, locate ChatGPT-assisted additions/edits, verify them against traceable sources, and document original provider, date, license, transformations and refresh plan. |
 | P0 | Possible mismatches across matches, team standings and scorers | Reconcile match IDs, goals, own goals, teams, duplicate player IDs and score totals; retain a test log. |
 | P0 | Disconnected global `matches` KPIs when filtering teams | Clearly distinguish tournament-wide KPIs from filtered ones; test interaction paths or redesign model. |
 | P1 | `Partidas com mais gols` may sort by date, despite title | Create per-match total goals and sort descending, preserving `match_id`. |
