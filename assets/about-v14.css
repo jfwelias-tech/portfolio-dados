@@ -172,3 +172,28 @@
 .about-v15-side .about-v14-tag { min-height: 44px; padding: 10px 12px; gap: 10px; }
 .about-v15-side .about-v14-tag span { font-size: 13px; }
 .about-v15-side .about-v14-tag svg { width: 21px; height: 21px; }
+
+/* Compact 2 × 2 interest grid in the personal profile card. */
+#beyond-data .about-v14-tags {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 20px;
+}
+#beyond-data .about-v14-tag {
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 6px;
+  gap: 6px;
+  justify-content: center;
+  border-radius: 10px;
+}
+#beyond-data .about-v14-tag svg {
+  width: 20px;
+  height: 20px;
+}
+#beyond-data .about-v14-tag span {
+  min-width: 0;
+  font-size: 13px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
