@@ -5,7 +5,7 @@
  const colors={IDHM:'#12a98f',IDHM_E:'#6877d9',IDHM_R:'#e6ad57',IDHM_L:'#5e9ec8'};
  const labels={en:{IDHM:'Overall IDHM',IDHM_E:'Education',IDHM_R:'Income',IDHM_L:'Longevity'},pt:{IDHM:'IDHM geral',IDHM_E:'Educação',IDHM_R:'Renda',IDHM_L:'Longevidade'}};
  const names={en:{all:'All states',top:'Highest first',bottom:'Lowest first',change:'Change 1991 → 2010',ranking:'Municipal ranking',found:'municipalities',shown:'Top 12 shown',empty:'No municipalities match the selected filters.',error:'Could not load the dataset. Open this site through GitHub Pages or a local HTTP server (not file://).'},pt:{all:'Todos os estados',top:'Maiores primeiro',bottom:'Menores primeiro',change:'Variação 1991 → 2010',ranking:'Ranking municipal',found:'municípios',shown:'12 primeiros exibidos',empty:'Nenhum município encontrado para esses filtros.',error:'Não foi possível carregar os dados. Abra o site pelo GitHub Pages ou por um servidor HTTP local (não file://).'}};
- const fmt=(num,n=3)=>Number(num).toFixed(n).replace('.',',');
+ const fmt=(num,n=3)=>Number(num).toFixed(n).replace('.',language==='pt'?',':'.');
  let D=null; let language=document.documentElement.lang.startsWith('pt')?'pt':'en';
  function svgNode(tag,attrs,text){const node=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs||{}))node.setAttribute(k,String(v));if(text!==undefined)node.textContent=text;return node;}
  function chart(){
@@ -57,22 +57,27 @@
     row.append(rank,label,progress,value);root.append(row);
   });
  }
+ function updateSummary(){if(!D)return;
+   $('metric-start').textContent=fmt(D.means_unweighted.IDHM[0]);
+   $('metric-end').textContent=fmt(D.means_unweighted.IDHM[2]);
+   $('overall-delta').textContent='+'+fmt(D.means_unweighted.IDHM[2]-D.means_unweighted.IDHM[0]);
+   $('education-delta').textContent='+'+fmt(D.means_unweighted.IDHM_E[2]-D.means_unweighted.IDHM_E[0]);
+ }
  function init(Dataset){D=Dataset;
-   $('metric-start').textContent=D.means_unweighted.IDHM[0].toFixed(3);
-   $('metric-end').textContent=D.means_unweighted.IDHM[2].toFixed(3);
-   $('overall-delta').textContent='+'+(D.means_unweighted.IDHM[2]-D.means_unweighted.IDHM[0]).toFixed(3);
-   $('education-delta').textContent='+'+(D.means_unweighted.IDHM_E[2]-D.means_unweighted.IDHM_E[0]).toFixed(3);
    [...new Set(D.municipalities.map(m=>m.state))].sort().forEach(uf=>{const o=document.createElement('option');o.value=uf;o.textContent=uf;$('state-filter').append(o)});
    ['metric-filter','year-filter','state-filter','order-filter'].forEach(id=>$(id).addEventListener('change',rank));
    refresh();
  }
  function refresh(){if(!D)return;
+   updateSummary();
+   $('trends-chart').setAttribute('aria-label',language==='pt'?'Série temporal das médias dos indicadores':'Time series chart of mean indices');
+   $('dimensions-bars').setAttribute('aria-label',language==='pt'?'Variação absoluta das médias municipais':'Absolute change in municipal averages');
    $('state-filter').options[0].textContent=names[language].all;
    $('order-filter').options[0].textContent=names[language].top;
    $('order-filter').options[1].textContent=names[language].bottom;
    $('year-filter').options[3].textContent=names[language].change;
    chart();bars();rank();
  }
- document.addEventListener('portfolio-language',e=>{language=e.detail.language;refresh()});
+ document.addEventListener('portfolio-language',e=>{language=e.detail.language==='en'?'en':'pt';document.title=language==='pt'?'IDHM Brasil 1991–2010 — João Felipe':'IDHM Brazil 1991–2010 — João Felipe';refresh()});
  fetch('data/idhm_dashboard.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(init).catch(err=>{$('rank-list').innerHTML='';const p=document.createElement('p');p.className='error-message';p.textContent=names[language].error;$('rank-list').append(p);console.error(err)});
 })();
