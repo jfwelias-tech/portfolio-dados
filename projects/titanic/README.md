@@ -6,7 +6,7 @@
 
 Muita gente conhece a história do Titanic pelo clássico de James Cameron. Entre romances e tragédias, o filme recria a viagem do navio que partiu de Southampton, na Inglaterra, em 10 de abril de 1912. Com o apoio da inteligência artificial e do machine learning, podemos identificar quais características dos passageiros estiveram associadas à sobrevivência ao naufrágio?
 
-A base do Titanic é popular entre estudantes de ciência de dados em projetos de exploração e previsão. A versão usada neste estudo foi fornecida pela HARVE e reúne 891 passageiros. [Consultar o CSV](https://drive.google.com/file/d/1YBOVngIdbdPAarnzADnPwTjNZuvBQinO/view)
+A base do Titanic é popular entre estudantes de ciência de dados em projetos de exploração e previsão. A versão usada neste projeto foi adquirida online: [Consultar o CSV](https://drive.google.com/file/d/1YBOVngIdbdPAarnzADnPwTjNZuvBQinO/view)
 
 ## A solução e o processo
 
