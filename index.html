@@ -21,6 +21,12 @@
 <link rel="stylesheet" href="assets/world-cup-card-v17.css?v=17">
 <link rel="stylesheet" href="assets/project-labels-v18.css?v=19">
 <link rel="stylesheet" href="assets/hero-intro-v20.css?v=20261120">
+<style>
+#project-cards .titanic-card { position:relative; }
+#project-cards .titanic-card .project-cta { position:static; }
+#project-cards .titanic-card .project-cta::after { content:""; position:absolute; inset:0; cursor:pointer; }
+#project-cards .titanic-card :is(.project-cover,h3 a,.tag-project-link) { position:relative; z-index:1; }
+</style>
 </head>
 <body>
 <a class="skip" href="#projects" data-pt="Ir para os projetos" data-en="Skip to projects">Ir para os projetos</a>
@@ -121,12 +127,12 @@
     </div>
   </article>
   <article class="project-card titanic-card" data-project-card data-skills="python pandas machinelearning ia" aria-labelledby="titanic-title">
-    <div class="project-cover titanic-cover"><img src="assets/titanic-cover.webp" alt="Titanic e bilhete de embarque ilustrado / Titanic and illustrated boarding pass" loading="lazy" width="1536" height="1024"><div class="cover-header"><span data-pt="PROJETO / 04" data-en="PROJECT / 04">PROJETO / 04</span><span>PYTHON + ML</span></div></div>
+    <a class="project-cover titanic-cover" href="projects/titanic/index.html" aria-labelledby="titanic-title"><img src="assets/titanic-cover.webp" alt="Titanic e bilhete de embarque ilustrado / Titanic and illustrated boarding pass" loading="lazy" width="1536" height="1024"><div class="cover-header"><span data-pt="PROJETO / 04" data-en="PROJECT / 04">PROJETO / 04</span><span>PYTHON + ML</span></div></a>
     <div class="project-body">
-      <div class="project-meta"><span class="number" data-pt="PROJETO 04" data-en="PROJECT 04">PROJETO 04</span><span class="status-chip" data-pt="PUBLICADO" data-en="PUBLISHED">PUBLICADO</span></div>
-      <h3 id="titanic-title" data-pt="Titanic: seu personagem sobreviveria?" data-en="Titanic: would your character survive?">Titanic: seu personagem sobreviveria?</h3>
+      <div class="project-meta"><span class="number" data-pt="PROJETO 04 / Machine Learning + IA" data-en="PROJECT 04 / Machine Learning + AI">PROJETO 04 / Machine Learning + IA</span><span class="status-chip" data-pt="PUBLICADO" data-en="PUBLISHED">PUBLICADO</span></div>
+      <h3 id="titanic-title"><a href="projects/titanic/index.html" data-pt="Titanic: seu personagem sobreviveria?" data-en="Titanic: would your character survive?">Titanic: seu personagem sobreviveria?</a></h3>
       <p data-pt="Crie o perfil de um passageiro e descubra sua probabilidade estimada de sobrevivência com análise de dados e Machine Learning." data-en="Create a passenger profile and explore their estimated survival probability through data analysis and Machine Learning.">Crie o perfil de um passageiro e descubra sua probabilidade estimada de sobrevivência com análise de dados e Machine Learning.</p>
-      <div class="tag-row titanic-tags" aria-label="Tecnologias / Technologies"><span>Python</span><span>Pandas</span><span>Machine Learning</span><span data-pt="IA" data-en="AI">IA</span></div>
+      <div class="tag-row titanic-tags" aria-label="Tecnologias / Technologies"><a class="tag-project-link" href="projects/titanic/index.html" data-linked-skill="python">Python</a><a class="tag-project-link" href="projects/titanic/index.html" data-linked-skill="pandas">Pandas</a><a class="tag-project-link" href="projects/titanic/index.html" data-linked-skill="machinelearning">Machine Learning</a><a class="tag-project-link" href="projects/titanic/index.html" data-linked-skill="ia" data-pt="IA" data-en="AI">IA</a></div>
       <a class="project-cta" href="projects/titanic/index.html" data-pt="Abrir simulador" data-en="Open simulator">Abrir simulador</a>
     </div>
   </article>
