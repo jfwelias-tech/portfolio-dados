@@ -23,15 +23,14 @@
   content: "";
   position: absolute;
   z-index: 1;
-  right: -13px;
-  top: 12px;
-  width: min(76%, 330px);
-  height: calc(100% - 22px);
-  background: url("./idhm-map-2026-hires.webp") no-repeat center / contain;
-  /* Image is 720x720, sampled down on narrow cards for crisp municipal-style detail. */
+  right: 2px;
+  top: 26px;
+  width: min(69%, 302px);
+  height: calc(100% - 50px);
+  background: url("./idhm-map-2026-hires.webp") no-repeat 60% 56% / contain;
   filter: saturate(1.06) contrast(1.03);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.50) 23%, #000 47%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.50) 23%, #000 47%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.68) 18%, #000 34%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.68) 18%, #000 34%);
   pointer-events: none;
 }
 #project-cards .idhm-cover .cover-header {
@@ -120,7 +119,14 @@
   background: rgba(224, 246, 234, .64);
 }
 @media (max-width: 760px) {
-  #project-cards .idhm-cover::after { right: -25px; width: 79%; opacity: .88; }
+  #project-cards .idhm-cover::after {
+    right: -8px;
+    top: 34px;
+    width: 74%;
+    height: calc(100% - 58px);
+    background-position: 62% 58%;
+    opacity: .92;
+  }
   #project-cards .idhm-cover-title { top: 78px; left: 23px; }
 }
 @media (max-width: 390px) {
