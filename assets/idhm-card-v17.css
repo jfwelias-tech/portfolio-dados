@@ -1,4 +1,4 @@
-/* Project 01 / IDHM — illustrated cover from the approved concept.
+/* Project 02 / IDHM — illustrated cover from the approved concept.
    Map artwork is illustrative, not a data-driven choropleth.
    Keep headings in HTML for accessibility and PT/EN translation. */
 #project-cards .idhm-cover {
@@ -27,7 +27,9 @@
   top: 12px;
   width: min(76%, 330px);
   height: calc(100% - 22px);
-  background: url("./idhm-map-cover.webp") no-repeat center / contain;
+  background: url("./idhm-map-2026-hires.webp") no-repeat center / contain;
+  /* Image is 720x720, sampled down on narrow cards for crisp municipal-style detail. */
+  filter: saturate(1.06) contrast(1.03);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.50) 23%, #000 47%);
   mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.50) 23%, #000 47%);
   pointer-events: none;
