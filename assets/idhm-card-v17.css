@@ -23,14 +23,15 @@
   content: "";
   position: absolute;
   z-index: 1;
-  right: 2px;
-  top: 26px;
-  width: min(69%, 302px);
-  height: calc(100% - 50px);
-  background: url("./idhm-map-2026-hires.webp") no-repeat 60% 56% / contain;
-  filter: saturate(1.06) contrast(1.03);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.68) 18%, #000 34%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.68) 18%, #000 34%);
+  right: 5px;
+  top: 43px;
+  width: min(75%, 320px);
+  height: calc(100% - 53px);
+  /* Crisp transparent Brazil illustration, derived from the approved cover. */
+  background-image: url("./idhm-brazil-map-crisp.webp");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
   pointer-events: none;
 }
 #project-cards .idhm-cover .cover-header {
@@ -120,12 +121,12 @@
 }
 @media (max-width: 760px) {
   #project-cards .idhm-cover::after {
-    right: -8px;
-    top: 34px;
-    width: 74%;
-    height: calc(100% - 58px);
-    background-position: 62% 58%;
-    opacity: .92;
+    right: 1px;
+    top: 53px;
+    width: 77%;
+    height: calc(100% - 63px);
+    background-position: right bottom;
+    opacity: 1;
   }
   #project-cards .idhm-cover-title { top: 78px; left: 23px; }
 }
